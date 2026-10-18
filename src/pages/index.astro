@@ -1,0 +1,1296 @@
+---
+import '@fontsource/montserrat/300.css';
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/quicksand/500.css';
+import '@fontsource/quicksand/700.css';
+import '../styles/global.css';
+
+import { Picture, Image, getImage } from 'astro:assets';
+import ProductCard from '../components/ProductCard.astro';
+import { compra, opcionales, yaTengo, total } from '../data/compra';
+import logo from '../assets/logo-emblema.png';
+import noche from '../assets/render/noche.png';
+import frontal from '../assets/render/frontal.png';
+import puerta from '../assets/render/puerta.png';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const eur = (v: number, dec = false) => {
+  const [ent, frac] = v.toFixed(dec ? 2 : 0).split('.');
+  return `${ent.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}${frac ? `,${frac}` : ''} €`;
+};
+const totalRedondo = eur(Math.round(total));
+
+const galeria = [
+  { src: frontal, alt: 'El escritorio negro de 160 cm en el cuarto pequeño, de frente, con las tres pantallas en brazos', pie: 'De frente, de día', full: await getImage({ src: frontal, width: 2000, format: 'webp' }) },
+  { src: puerta, alt: 'El mismo escritorio visto desde la puerta, con el balcón a la derecha', pie: 'Desde la puerta', full: await getImage({ src: puerta, width: 2000, format: 'webp' }) },
+  { src: noche, alt: 'El escritorio de noche, con la barra de luz y una tira LED dorada', pie: 'De noche, modo negro y oro', full: await getImage({ src: noche, width: 2000, format: 'webp' }) },
+];
+
+const nav = [
+  { href: '#queda', label: 'Así queda' },
+  { href: '#lista', label: 'La lista' },
+  { href: '#total', label: 'Total' },
+  { href: '#cuarto', label: 'El cuarto' },
+  { href: '#conexiones', label: 'Conexiones' },
+  { href: '#hermes', label: 'Hermes' },
+  { href: '#pendientes', label: 'Pendientes' },
+];
+
+const razones = [
+  { t: 'Es solo mío', d: 'Un cuarto entero para trabajar y grabar, sin compartirlo con nada. El mediano, más grande y con más luz, queda para la cama de las visitas y el tocador.' },
+  { t: 'El aire no me da en la cabeza', d: 'En el cuarto mediano el aire acondicionado está encima de la puerta y su chorro va justo donde me sentaría. Aquí no.' },
+  { t: 'En cámara no sale nada raro', d: 'Me siento mirando a la pared de la tele. Detrás, en el vídeo, sale la pared de la puerta: limpia y fácil de decorar. Ni tocador ni cama.' },
+  { t: 'Los enchufes ya están', d: 'La pared de la mesa tiene dos enchufes. Solo falta internet, y lo resuelve el PLC sin obras ni cables por el suelo.' },
+];
+
+const internet = [
+  'Pruebo el Wi-Fi en el cuarto con un test de velocidad. Si va bien, no compro nada.',
+  'Si va flojo: un adaptador PLC junto al router, enchufado a la pared y conectado al router con su cable.',
+  'El otro adaptador, en el enchufe bajo de la columna de mi cuarto, y un cable de red de él al Mac mini.',
+  'El ladrón se enchufa en el propio PLC, nunca al revés: dentro de un ladrón el PLC pierde casi toda la velocidad.',
+  'Si no se encienden las luces solas, pulso "Pair" en uno y luego en el otro. Unos 10 minutos en total.',
+];
+
+const pantallas = [
+  { k: 'MSI 40"', v: 'Al Thunderbolt 1, con el cable USB-C a DisplayPort (155 Hz).' },
+  { k: 'Lenovo 1', v: 'Al Thunderbolt 2, con su cable USB-C: imagen y USB en uno.' },
+  { k: 'Lenovo 2', v: 'Al HDMI del Mac, o al Thunderbolt 3.' },
+  { k: 'Dock Baseus', v: 'A un puerto libre, solo para USB, red y audio.' },
+];
+
+const corriente = [
+  'La mesa, separada 5-8 cm de la pared: hay un enchufe a media altura y al subirla chocaría con la clavija.',
+  'Todo al ladrón: Mac, MSI, las dos Lenovo, el motor de la mesa y la lámpara.',
+  'El interruptor del ladrón, siempre encendido: si lo apago, apago a Hermes.',
+  'La E5 aguanta 100 kg y todo el montaje pesa unos 55: sobra casi la mitad.',
+];
+
+const flujo = [
+  { t: 'Grabo', d: 'Fotos o vídeos con el móvil, donde sea.' },
+  { t: 'Se suben solos', d: 'A una carpeta de iCloud que el Mac mini tiene descargada.' },
+  { t: 'Se lo pido', d: 'Por Telegram o WhatsApp: "Hermes, edítame los vídeos de hoy".' },
+  { t: 'Vídeo listo', d: 'Hermes corta, subtitula y me lo devuelve para subirlo a redes.' },
+];
+
+const servidor = [
+  'Ajustes > Energía: que no entre nunca en reposo y que arranque solo tras un corte de luz.',
+  'iCloud Drive: desactivar "Optimizar almacenamiento del Mac" para que los vídeos se descarguen de verdad.',
+  'Hermes con la suscripción de ChatGPT o Codex (`hermes model`) y el gateway de Telegram (`hermes gateway setup`).',
+  'Un usuario de macOS solo para Hermes, con las herramientas justas y sin acceso al banco ni al correo personal.',
+  'Copias con Time Machine y, para fuera de casa, Tailscale o Compartir pantalla.',
+];
+
+const pendientes = [
+  { id: 'e5', t: 'Comprar la estructura E5 antes de que acabe la oferta (hacia el 26 de octubre)' },
+  { id: 'tablero', t: 'Pedir el tablero Smart Value 160 × 80 negro' },
+  { id: 'resto', t: 'Comprar las pantallas, los brazos, el Mac mini y los cables' },
+  { id: 'silla', t: 'Probar la Owlotech Summit en PcComponentes Madrid (o la MARKUS en IKEA Torrejón)' },
+  { id: 'wifi', t: 'Probar el Wi-Fi en el cuarto; si va flojo, comprar el PLC' },
+  { id: 'novia', t: 'Que mi novia me pase las medidas del tocador y de la cama (135 o 150)' },
+  { id: 'montar', t: 'Montar la mesa a 5-8 cm de la pared y los brazos' },
+  { id: 'mac', t: 'Dejar el Mac mini listo como servidor de Hermes' },
+  { id: 'luego', t: 'Más adelante: la cinta de andar y el SSD externo' },
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Escritorio Rubén</title>
+    <meta name="description" content={`Lo que compro para mi despacho, por qué lo compro y cuánto cuesta: ${totalRedondo}.`} />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <link rel="icon" href={`${base}favicon.png`} type="image/png" />
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
+  </head>
+  <body>
+    <a class="skip-link" href="#queda">Saltar al contenido</a>
+
+    <header class="top">
+      <a class="brand" href="#inicio" aria-label="Escritorio Rubén, inicio">
+        <Image src={logo} alt="" width={40} height={40} class="brand__logo" />
+        <span class="brand__name">Escritorio <b>Rubén</b></span>
+      </a>
+      <nav class="top__nav" aria-label="Secciones">
+        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+      </nav>
+      <a class="top__total" href="#total" aria-label={`Total: ${totalRedondo}`}>{totalRedondo}</a>
+    </header>
+
+    <main id="inicio">
+      <!-- PORTADA -->
+      <section class="hero" aria-labelledby="hero-t">
+        <Picture
+          src={noche}
+          alt=""
+          formats={['webp']}
+          fallbackFormat="webp"
+          widths={[800, 1400, 2000]}
+          sizes="100vw"
+          class="hero__bg"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="hero__veil" aria-hidden="true"></div>
+        <div class="hero__inner container">
+          <Image src={logo} alt="Logo de Rubén: una R dorada con cabeza de toro" width={150} height={150} class="hero__logo" loading="eager" />
+          <p class="kicker">Trabajar · Grabar · Automatizar</p>
+          <h1 class="hero__title" id="hero-t">Escritorio Rubén</h1>
+          <p class="hero__lead">
+            Mesa elevable negra, tres pantallas en brazos y un Mac mini con Hermes trabajando día y noche. Esto es todo lo que
+            compro, por qué lo compro y cuánto cuesta.
+          </p>
+          <dl class="hero__stats">
+            <div><dt>Total</dt><dd>{totalRedondo}</dd></div>
+            <div><dt>Mesa</dt><dd>160 × 80</dd></div>
+            <div><dt>Pantallas</dt><dd>40" + 2 × 27"</dd></div>
+            <div><dt>Hermes</dt><dd>24/7</dd></div>
+          </dl>
+          <div class="hero__cta">
+            <a class="btn btn--solid" href="#lista">Ver la lista</a>
+            <a class="btn" href="#queda">Así va a quedar</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ASÍ VA A QUEDAR -->
+      <section id="queda" class="band band--light" aria-labelledby="queda-t">
+        <div class="container">
+          <p class="kicker">Cuarto pequeño · pared de la tele</p>
+          <h2 class="section-title" id="queda-t">Así va a quedar</h2>
+          <p class="intro">
+            Imágenes generadas con IA a partir de las fotos del cuarto. La mesa, el balcón y el armario están donde están de verdad;
+            los detalles pequeños pueden variar.
+          </p>
+          <div class="gallery">
+            {
+              galeria.map((g, i) => (
+                <figure class:list={['gallery__item', { 'gallery__item--main': i === 0 }]}>
+                  <button type="button" class="gallery__open" data-full={g.full.src} data-alt={g.alt} aria-label={`Ampliar: ${g.pie}`}>
+                    <Picture
+                      src={g.src}
+                      alt={g.alt}
+                      formats={['webp']}
+                      fallbackFormat="webp"
+                      widths={i === 0 ? [700, 1200, 1800] : [500, 900]}
+                      sizes={i === 0 ? '(min-width: 960px) 760px, 100vw' : '(min-width: 960px) 380px, 100vw'}
+                    />
+                  </button>
+                  <figcaption>{g.pie}</figcaption>
+                </figure>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- LA LISTA -->
+      <section id="lista" class="band" aria-labelledby="lista-t">
+        <div class="container">
+          <p class="kicker">{compra.length} cosas · con su porqué</p>
+          <h2 class="section-title" id="lista-t">La lista</h2>
+          <p class="intro">
+            Cada cosa con su enlace para comprarla y el motivo por el que la elijo. Marca "Ya lo he comprado" y el total de abajo
+            va restando lo que te queda.
+          </p>
+          <div class="grid">
+            {compra.map((p, i) => <ProductCard p={p} n={i + 1} />)}
+          </div>
+
+          <h3 class="sub-title">Opcional y para más adelante</h3>
+          <div class="grid grid--3">
+            {opcionales.map((p) => <ProductCard p={p} opcional />)}
+          </div>
+
+          <h3 class="sub-title">Lo que ya tengo</h3>
+          <ul class="have">
+            {
+              yaTengo.map((y) => (
+                <li>
+                  <strong>{y.nombre}</strong>
+                  <span>{y.nota}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+
+      <!-- EL TOTAL -->
+      <section id="total" class="band band--light" aria-labelledby="total-t">
+        <div class="container">
+          <p class="kicker">La cuenta</p>
+          <h2 class="section-title" id="total-t">El total</h2>
+          <div class="ticket">
+            <div class="ticket__head">
+              <Image src={logo} alt="" width={56} height={56} class="ticket__logo" />
+              <p>Escritorio Rubén<br /><span>Precios del 17-18 de octubre de 2026</span></p>
+            </div>
+            <ol class="ticket__rows">
+              {
+                compra.map((p) => (
+                  <li class="ticket__row" data-id={p.id}>
+                    <span class="ticket__name">{p.nombre}</span>
+                    <span class="ticket__dots" aria-hidden="true" />
+                    <span class="ticket__price">{p.aprox ? `~${eur(p.precio)}` : eur(p.precio, true)}</span>
+                  </li>
+                ))
+              }
+            </ol>
+            <div class="ticket__total">
+              <span>Total</span>
+              <strong>{totalRedondo}</strong>
+            </div>
+            <div class="ticket__progress" aria-live="polite">
+              <div class="bar"><span id="bar-fill"></span></div>
+              <p>
+                Comprado: <b id="paid">0 €</b> · Te falta: <b id="left">{totalRedondo}</b>
+              </p>
+            </div>
+            <p class="ticket__foot">
+              Con tu ladrón de enchufes. Los cables van a precio aproximado. Si el Wi-Fi va bien en el cuarto, réstale 64,99 € del
+              PLC y 8 € del cable de red.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EL CUARTO -->
+      <section id="cuarto" class="band band--coal" aria-labelledby="cuarto-t">
+        <div class="container">
+          <p class="kicker">356 × 280 cm</p>
+          <h2 class="section-title" id="cuarto-t">El cuarto</h2>
+          <p class="intro">Por qué el cuarto pequeño y cómo va todo colocado.</p>
+          <div class="room">
+            <figure class="room__plan">
+              <svg viewBox="-60 -44 490 378" role="img" aria-labelledby="plan-t plan-d">
+                <title id="plan-t">Plano del cuarto pequeño</title>
+                <desc id="plan-d">Mesa de 160 por 80 en la pared de la tele, entre la columna y el balcón. El armario a la izquierda, el balcón a la derecha, la puerta y el radiador en la pared de enfrente.</desc>
+                <text class="pl-cap" x="178" y="-26" text-anchor="middle">Pared de la tele · 2 enchufes</text>
+                <rect x="0" y="0" width="356" height="280" class="pl-floor" />
+                <path d="M0 0 H356 V35 M356 150 V280 H90 M15 280 H0 V0" class="pl-wall" />
+                <rect x="0" y="10" width="64" height="165" class="pl-box" />
+                <text class="pl-t" x="32" y="96" text-anchor="middle">Armario</text>
+                <rect x="64" y="0" width="40" height="10" class="pl-box" />
+                <rect x="353" y="35" width="6" height="115" class="pl-glass" />
+                <path d="M356 92 A57 57 0 0 1 299 35 M356 35 H299 M356 93 A57 57 0 0 0 299 150 M356 150 H299" class="pl-swing" />
+                <text class="pl-t" x="366" y="96">Balcón</text>
+                <path d="M190 92 L62 278 M190 92 L318 278" class="pl-cam" />
+                <rect x="110" y="8" width="160" height="80" rx="2" class="pl-desk" />
+                <rect x="129" y="14" width="122" height="5" class="pl-screens" />
+                <text class="pl-desk-t" x="190" y="56" text-anchor="middle">Mesa 160 × 80</text>
+                <circle cx="190" cy="128" r="26" class="pl-chair" />
+                <circle cx="84" cy="3" r="5" class="pl-plug" />
+                <circle cx="232" cy="3" r="5" class="pl-plug" />
+                <text class="pl-gold" x="84" y="-8" text-anchor="middle">PLC</text>
+                <path d="M90 280 V205 M90 205 A75 75 0 0 0 15 280" class="pl-swing" />
+                <text class="pl-t" x="50" y="266" text-anchor="middle">Puerta</text>
+                <rect x="262" y="272" width="80" height="8" class="pl-rad" />
+                <text class="pl-t" x="302" y="262" text-anchor="middle">Radiador</text>
+                <text class="pl-cam-t" x="190" y="226" text-anchor="middle">Lo que ve la cámara</text>
+                <text class="pl-cap" x="178" y="312" text-anchor="middle">Pared de la puerta · radiador · internet</text>
+              </svg>
+              <figcaption>Plano aproximado, sacado de las fotos y del plano de la casa. Medidas en cm.</figcaption>
+            </figure>
+            <ol class="reasons">
+              {
+                razones.map((r, i) => (
+                  <li>
+                    <span class="reasons__n">{String(i + 1).padStart(2, '0')}</span>
+                    <div>
+                      <h3>{r.t}</h3>
+                      <p>{r.d}</p>
+                    </div>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONEXIONES -->
+      <section id="conexiones" class="band band--light" aria-labelledby="conexiones-t">
+        <div class="container">
+          <p class="kicker">Internet · pantallas · corriente</p>
+          <h2 class="section-title" id="conexiones-t">Cómo se conecta</h2>
+          <div class="cols">
+            <article class="col">
+              <h3>Internet</h3>
+              <ol class="steps">{internet.map((s) => <li>{s}</li>)}</ol>
+            </article>
+            <article class="col">
+              <h3>Las 3 pantallas</h3>
+              <dl class="ports">
+                {
+                  pantallas.map((p) => (
+                    <div>
+                      <dt>{p.k}</dt>
+                      <dd>{p.v}</dd>
+                    </div>
+                  ))
+                }
+              </dl>
+              <p class="col__note">Los USB-C de delante del Mac mini no sacan imagen.</p>
+            </article>
+            <article class="col">
+              <h3>Corriente</h3>
+              <ul class="ticks">{corriente.map((s) => <li>{s}</li>)}</ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- HERMES -->
+      <section id="hermes" class="band" aria-labelledby="hermes-t">
+        <div class="container">
+          <p class="kicker">El Mac mini como servidor</p>
+          <h2 class="section-title" id="hermes-t">Hermes 24/7</h2>
+          <p class="intro">
+            El objetivo: dejar a Hermes Agent trabajando en el Mac mini y mandarle cosas desde el móvil. La IA piensa en la nube; el
+            Mac coordina y hace el trabajo pesado.
+          </p>
+          <ol class="flow">
+            {
+              flujo.map((f, i) => (
+                <li>
+                  <span class="flow__n">{i + 1}</span>
+                  <h3>{f.t}</h3>
+                  <p>{f.d}</p>
+                </li>
+              ))
+            }
+          </ol>
+          <div class="server">
+            <h3>Para dejarlo listo</h3>
+            <ul class="ticks ticks--dark">{servidor.map((s) => <li set:html={s.replace(/`([^`]+)`/g, '<code>$1</code>')} />)}</ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PENDIENTES -->
+      <section id="pendientes" class="band band--light" aria-labelledby="pendientes-t">
+        <div class="container">
+          <p class="kicker">Lo que falta</p>
+          <h2 class="section-title" id="pendientes-t">Pendientes</h2>
+          <p class="intro">Ve marcando según lo hagas: se queda guardado en este navegador.</p>
+          <ul class="todo">
+            {
+              pendientes.map((p) => (
+                <li>
+                  <label>
+                    <input type="checkbox" class="js-todo" value={p.id} />
+                    <span>{p.t}</span>
+                  </label>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <Image src={logo} alt="" width={64} height={64} class="foot__logo" />
+      <p class="foot__name">Escritorio Rubén</p>
+      <p class="foot__small">
+        Precios consultados el 17-18 de octubre de 2026 en la web de cada tienda; pueden cambiar. Las fotos de los productos son
+        de cada tienda. ¿Quieres ver todas las opciones que comparé?
+        <a href="https://rubenzor25-commits.github.io/setup-escritorio/" target="_blank" rel="noopener">Comparativa completa ↗</a>
+      </p>
+    </footer>
+
+    <dialog class="lightbox" aria-label="Imagen ampliada">
+      <form method="dialog"><button class="lightbox__close" aria-label="Cerrar">×</button></form>
+      <img alt="" />
+    </dialog>
+
+    <script>
+      const eur = (n: number) => `${String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} €`;
+      const read = (k: string): string[] => {
+        try {
+          return JSON.parse(localStorage.getItem(k) ?? '[]');
+        } catch {
+          return [];
+        }
+      };
+      const write = (k: string, v: string[]) => {
+        try {
+          localStorage.setItem(k, JSON.stringify(v));
+        } catch {
+          /* sin almacenamiento: no pasa nada */
+        }
+      };
+
+      // Fotos de tienda que no cargan: se cambia por el nombre de la categoría
+      document.querySelectorAll<HTMLImageElement>('.card__media img').forEach((img) => {
+        const swap = () => {
+          const ph = document.createElement('span');
+          ph.className = 'card__ph';
+          ph.textContent = img.closest('.card')?.querySelector('.card__cat')?.textContent ?? '';
+          img.replaceWith(ph);
+        };
+        if (img.complete && img.naturalWidth === 0) swap();
+        else img.addEventListener('error', swap);
+      });
+
+      // Lo comprado: marca la tarjeta y la línea del ticket, y recalcula lo que falta
+      const KB = 'escritorio-ruben:comprado';
+      const KT = 'escritorio-ruben:pendientes';
+      const totalAll = [...document.querySelectorAll<HTMLElement>('.card[data-precio]')]
+        .filter((c) => c.querySelector('.js-bought'))
+        .reduce((s, c) => s + Number(c.dataset.precio), 0);
+      const bought = new Set(read(KB));
+      const paint = () => {
+        let paid = 0;
+        document.querySelectorAll<HTMLInputElement>('.js-bought').forEach((i) => {
+          const on = bought.has(i.value);
+          i.checked = on;
+          const card = i.closest<HTMLElement>('.card');
+          card?.classList.toggle('is-bought', on);
+          document.querySelector(`.ticket__row[data-id="${i.value}"]`)?.classList.toggle('is-done', on);
+          if (on && card) paid += Number(card.dataset.precio);
+        });
+        document.getElementById('paid')!.textContent = eur(paid);
+        document.getElementById('left')!.textContent = eur(totalAll - paid);
+        (document.getElementById('bar-fill') as HTMLElement).style.width = `${totalAll ? (paid / totalAll) * 100 : 0}%`;
+      };
+      document.addEventListener('change', (e) => {
+        const t = e.target as HTMLInputElement;
+        if (t.matches('.js-bought')) {
+          t.checked ? bought.add(t.value) : bought.delete(t.value);
+          write(KB, [...bought]);
+          paint();
+        }
+        if (t.matches('.js-todo')) {
+          const done = [...document.querySelectorAll<HTMLInputElement>('.js-todo:checked')].map((x) => x.value);
+          write(KT, done);
+        }
+      });
+      paint();
+
+      // Pendientes
+      const todo = new Set(read(KT));
+      document.querySelectorAll<HTMLInputElement>('.js-todo').forEach((i) => (i.checked = todo.has(i.value)));
+
+      // Galería ampliada
+      const dlg = document.querySelector<HTMLDialogElement>('.lightbox')!;
+      const big = dlg.querySelector('img')!;
+      document.querySelectorAll<HTMLButtonElement>('.gallery__open').forEach((b) =>
+        b.addEventListener('click', () => {
+          big.src = b.dataset.full ?? '';
+          big.alt = b.dataset.alt ?? '';
+          dlg.showModal();
+        }),
+      );
+      dlg.addEventListener('click', (e) => {
+        if (e.target === dlg) dlg.close();
+      });
+    </script>
+
+    <style>
+      /* Cabecera */
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        height: var(--header-h);
+        padding-inline: clamp(12px, 3vw, 32px);
+        background: rgba(10, 10, 11, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line-dark);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+      :global(.brand__logo) {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid var(--gold);
+      }
+      .brand__name {
+        font-family: var(--font-display);
+        font-size: 12px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .brand__name b {
+        font-weight: 500;
+        color: var(--gold);
+      }
+      .top__nav {
+        display: flex;
+        gap: clamp(14px, 2vw, 26px);
+        margin-left: auto;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .top__nav::-webkit-scrollbar {
+        display: none;
+      }
+      .top__nav a {
+        white-space: nowrap;
+        color: var(--muted);
+        padding-block: 6px;
+      }
+      .top__nav a:hover {
+        color: var(--gold-light);
+      }
+      .top__total {
+        flex-shrink: 0;
+        padding: 6px 14px;
+        border: 1px solid var(--gold);
+        border-radius: 999px;
+        color: var(--gold-light);
+        font-family: var(--font-display);
+        font-size: 13px;
+        letter-spacing: 0.06em;
+      }
+      .top__total:hover {
+        background: var(--gold);
+        color: var(--black);
+      }
+      @media (max-width: 1020px) {
+        .top {
+          height: auto;
+          flex-wrap: wrap;
+          gap: 4px 12px;
+          padding-block: 10px 6px;
+        }
+        .top__total {
+          margin-left: auto;
+        }
+        .top__nav {
+          order: 3;
+          width: 100%;
+          margin-left: 0;
+          justify-content: flex-start;
+        }
+      }
+      @media (max-width: 420px) {
+        .brand__name {
+          font-size: 11px;
+          letter-spacing: 0.22em;
+        }
+      }
+
+      /* Portada */
+      .hero {
+        position: relative;
+        display: grid;
+        align-items: end;
+        min-height: min(92vh, 900px);
+        overflow: hidden;
+        isolation: isolate;
+      }
+      :global(.hero__bg) {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 40%;
+      }
+      .hero__veil {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(180deg, rgba(10, 10, 11, 0.35) 0%, rgba(10, 10, 11, 0.55) 45%, rgba(10, 10, 11, 0.96) 100%),
+          radial-gradient(ellipse at 50% 30%, transparent 30%, rgba(10, 10, 11, 0.5) 100%);
+      }
+      .hero__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-block: clamp(80px, 14vh, 140px) clamp(48px, 8vh, 80px);
+      }
+      :global(.hero__logo) {
+        width: clamp(104px, 14vw, 150px);
+        height: auto;
+        border-radius: 50%;
+        border: 1px solid var(--gold);
+        box-shadow: 0 0 0 8px rgba(201, 166, 90, 0.08);
+        margin-bottom: 22px;
+      }
+      .hero__title {
+        margin: 14px 0 18px;
+        font-family: var(--font-display);
+        font-weight: 300;
+        font-size: clamp(30px, 6.4vw, 72px);
+        letter-spacing: 0.32em;
+        padding-left: 0.32em;
+        text-transform: uppercase;
+        line-height: 1.12;
+        color: var(--cream);
+      }
+      .hero__lead {
+        max-width: 640px;
+        margin: 0 auto;
+        font-size: clamp(16px, 2vw, 19px);
+        color: var(--cream-2);
+      }
+      .hero__stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: min(760px, 100%);
+        margin: clamp(28px, 5vw, 44px) 0 clamp(26px, 4vw, 36px);
+        border-top: 1px solid var(--line-dark);
+        border-bottom: 1px solid var(--line-dark);
+      }
+      .hero__stats div {
+        padding: 16px 8px;
+      }
+      .hero__stats div + div {
+        border-left: 1px solid var(--line-dark);
+      }
+      .hero__stats dt {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hero__stats dd {
+        margin: 4px 0 0;
+        font-family: var(--font-display);
+        font-weight: 300;
+        font-size: clamp(17px, 2.6vw, 26px);
+        color: var(--gold-light);
+        white-space: nowrap;
+      }
+      @media (max-width: 560px) {
+        .hero__stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .hero__stats div:nth-child(3) {
+          border-left: 0;
+        }
+        .hero__stats div:nth-child(n + 3) {
+          border-top: 1px solid var(--line-dark);
+        }
+      }
+      .hero__cta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      /* Galería */
+      .gallery {
+        display: grid;
+        gap: clamp(12px, 2vw, 20px);
+      }
+      @media (min-width: 960px) {
+        .gallery {
+          grid-template-columns: 2fr 1fr;
+          grid-template-rows: auto auto;
+        }
+        .gallery__item--main {
+          grid-row: span 2;
+        }
+      }
+      .gallery__item {
+        margin: 0;
+      }
+      .gallery__open {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: zoom-in;
+        overflow: hidden;
+      }
+      .gallery__open :global(img) {
+        width: 100%;
+        transition: transform 0.6s ease;
+      }
+      .gallery__open:hover :global(img) {
+        transform: scale(1.02);
+      }
+      .gallery__item figcaption {
+        padding-top: 10px;
+        font-family: var(--font-display);
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      /* Lista */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+        gap: clamp(18px, 3vw, 30px);
+      }
+      .grid--3 {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+      }
+      .sub-title {
+        margin: clamp(56px, 8vw, 84px) 0 26px;
+        text-align: center;
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: 15px;
+        letter-spacing: 0.3em;
+        padding-left: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .have {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .have li {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding: 16px 18px;
+        background: var(--black);
+        border: 1px solid var(--line-dark);
+      }
+      .have strong {
+        font-weight: 700;
+        color: var(--cream);
+      }
+      .have span {
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      /* Ticket */
+      .ticket {
+        position: relative;
+        max-width: 620px;
+        margin: 0 auto;
+        padding: 36px clamp(20px, 5vw, 44px) 32px;
+        background: #fffdf8;
+        color: var(--ink);
+        box-shadow: 0 30px 60px -30px rgba(20, 20, 20, 0.35);
+        -webkit-mask:
+          radial-gradient(circle 9px at 50% 0, transparent 98%, #000) top / 26px 51% repeat-x,
+          radial-gradient(circle 9px at 50% 100%, transparent 98%, #000) bottom / 26px 51% repeat-x;
+        mask:
+          radial-gradient(circle 9px at 50% 0, transparent 98%, #000) top / 26px 51% repeat-x,
+          radial-gradient(circle 9px at 50% 100%, transparent 98%, #000) bottom / 26px 51% repeat-x;
+      }
+      .ticket__head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding-bottom: 18px;
+        margin-bottom: 14px;
+        border-bottom: 1px dashed var(--line-light);
+      }
+      :global(.ticket__logo) {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+      }
+      .ticket__head p {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 14px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        line-height: 1.5;
+      }
+      .ticket__head span {
+        font-family: var(--font-body);
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        text-transform: none;
+        color: var(--ink-soft);
+      }
+      .ticket__rows {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .ticket__row {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        padding: 7px 0;
+        font-size: 15px;
+      }
+      .ticket__name {
+        min-width: 0;
+      }
+      .ticket__dots {
+        flex: 1;
+        min-width: 16px;
+        border-bottom: 1px dotted #b9ad94;
+        transform: translateY(-4px);
+      }
+      .ticket__price {
+        font-family: var(--font-display);
+        white-space: nowrap;
+      }
+      .ticket__row.is-done {
+        color: #9a917e;
+      }
+      .ticket__row.is-done .ticket__name {
+        text-decoration: line-through;
+      }
+      .ticket__row.is-done .ticket__price::after {
+        content: ' ✓';
+        color: var(--gold-deep);
+      }
+      .ticket__total {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 14px;
+        padding-top: 16px;
+        border-top: 2px solid var(--ink);
+      }
+      .ticket__total span {
+        font-family: var(--font-display);
+        font-size: 13px;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+      }
+      .ticket__total strong {
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: clamp(34px, 7vw, 46px);
+        color: var(--gold-deep);
+        line-height: 1;
+      }
+      .ticket__progress {
+        margin-top: 22px;
+      }
+      .bar {
+        height: 6px;
+        background: var(--cream-2);
+        overflow: hidden;
+      }
+      .bar span {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-light));
+        transition: width 0.5s ease;
+      }
+      .ticket__progress p {
+        margin: 10px 0 0;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .ticket__progress b {
+        color: var(--ink);
+      }
+      .ticket__foot {
+        margin: 18px 0 0;
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+
+      /* Cuarto */
+      .room {
+        display: grid;
+        gap: clamp(28px, 5vw, 56px);
+        align-items: center;
+      }
+      @media (min-width: 900px) {
+        .room {
+          grid-template-columns: 1.1fr 1fr;
+        }
+      }
+      .room__plan {
+        margin: 0;
+      }
+      .room__plan svg {
+        width: 100%;
+        height: auto;
+        font-family: var(--font-body);
+      }
+      .room__plan figcaption {
+        margin-top: 8px;
+        font-size: 13px;
+        color: var(--muted);
+        text-align: center;
+      }
+      .pl-floor {
+        fill: #18181b;
+      }
+      .pl-wall {
+        fill: none;
+        stroke: var(--cream);
+        stroke-width: 4;
+      }
+      .pl-box {
+        fill: #26262a;
+        stroke: #4a4a50;
+        stroke-width: 1;
+      }
+      .pl-glass {
+        fill: #6f8fb3;
+      }
+      .pl-swing {
+        fill: none;
+        stroke: var(--muted);
+        stroke-width: 1;
+        stroke-dasharray: 4 3;
+      }
+      .pl-desk {
+        fill: var(--gold);
+      }
+      .pl-screens {
+        fill: var(--black);
+      }
+      .pl-desk-t {
+        font-size: 12px;
+        font-weight: 700;
+        fill: var(--black);
+        letter-spacing: 0.04em;
+      }
+      .pl-chair {
+        fill: none;
+        stroke: var(--gold-light);
+        stroke-width: 2;
+      }
+      .pl-plug {
+        fill: var(--gold-light);
+      }
+      .pl-rad {
+        fill: #c8734f;
+      }
+      .pl-cam {
+        fill: none;
+        stroke: var(--gold);
+        stroke-width: 1;
+        stroke-dasharray: 6 4;
+        opacity: 0.7;
+      }
+      .pl-t {
+        font-size: 11px;
+        fill: var(--cream-2);
+      }
+      .pl-gold {
+        font-size: 11px;
+        font-weight: 700;
+        fill: var(--gold-light);
+      }
+      .pl-cap {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        fill: var(--muted);
+        text-transform: uppercase;
+      }
+      .pl-cam-t {
+        font-size: 11px;
+        fill: var(--gold);
+        font-style: italic;
+      }
+      .reasons {
+        display: grid;
+        gap: 22px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .reasons li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 18px;
+        align-items: start;
+        padding-bottom: 22px;
+        border-bottom: 1px solid var(--line-dark);
+      }
+      .reasons__n {
+        font-family: var(--font-display);
+        font-weight: 300;
+        font-size: 30px;
+        line-height: 1;
+        color: var(--gold);
+      }
+      .reasons h3 {
+        margin: 0 0 6px;
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .reasons p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      /* Conexiones */
+      .cols {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: clamp(28px, 4vw, 44px);
+      }
+      .col h3 {
+        margin: 0 0 18px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--ink);
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+      }
+      .steps {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: s;
+      }
+      .steps li {
+        position: relative;
+        padding: 0 0 14px 40px;
+        counter-increment: s;
+        color: var(--ink-soft);
+      }
+      .steps li::before {
+        content: counter(s);
+        position: absolute;
+        left: 0;
+        top: -1px;
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        border: 1px solid var(--gold-deep);
+        border-radius: 50%;
+        font-family: var(--font-display);
+        font-size: 12px;
+        color: var(--gold-deep);
+      }
+      .ports {
+        margin: 0;
+      }
+      .ports div {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line-light);
+      }
+      .ports dt {
+        font-weight: 700;
+        color: var(--gold-deep);
+      }
+      .ports dd {
+        margin: 0;
+        color: var(--ink-soft);
+      }
+      .col__note {
+        margin: 12px 0 0;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .ticks {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .ticks li {
+        position: relative;
+        padding: 0 0 14px 28px;
+        color: var(--ink-soft);
+      }
+      .ticks li::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--gold-deep);
+      }
+      .ticks--dark li {
+        color: var(--cream-2);
+      }
+      .ticks--dark li::before {
+        color: var(--gold);
+      }
+      .ticks :global(code) {
+        padding: 1px 6px;
+        background: var(--coal-2);
+        border: 1px solid var(--line-dark);
+        font-size: 13px;
+        color: var(--gold-light);
+      }
+
+      /* Hermes */
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+        gap: 10px;
+        margin: 0 0 clamp(36px, 6vw, 56px);
+        padding: 0;
+        list-style: none;
+      }
+      .flow li {
+        padding: 26px 22px;
+        background: var(--coal);
+        border: 1px solid var(--line-dark);
+      }
+      .flow__n {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        margin-bottom: 14px;
+        border-radius: 50%;
+        background: var(--gold);
+        color: var(--black);
+        font-family: var(--font-display);
+        font-weight: 500;
+      }
+      .flow h3 {
+        margin: 0 0 6px;
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+      }
+      .flow p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .server {
+        max-width: 780px;
+        margin: 0 auto;
+      }
+      .server h3 {
+        margin: 0 0 18px;
+        text-align: center;
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      /* Pendientes */
+      .todo {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid var(--line-light);
+      }
+      .todo li {
+        border-bottom: 1px solid var(--line-light);
+      }
+      .todo label {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        padding: 14px 4px;
+        cursor: pointer;
+      }
+      .todo input {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        accent-color: var(--gold-deep);
+      }
+      .todo input:checked + span {
+        color: #9a917e;
+        text-decoration: line-through;
+      }
+
+      /* Pie */
+      .foot {
+        padding: clamp(48px, 7vw, 72px) var(--gutter);
+        text-align: center;
+        border-top: 1px solid var(--line-dark);
+      }
+      :global(.foot__logo) {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 14px;
+        border-radius: 50%;
+        border: 1px solid var(--gold);
+      }
+      .foot__name {
+        margin: 0 0 10px;
+        font-family: var(--font-display);
+        font-size: 13px;
+        letter-spacing: 0.34em;
+        padding-left: 0.34em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .foot__small {
+        max-width: 620px;
+        margin: 0 auto;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .foot__small a {
+        color: var(--gold-light);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      /* Ampliar imagen */
+      .lightbox {
+        width: min(96vw, 1600px);
+        max-height: 92vh;
+        padding: 0;
+        border: 1px solid var(--gold);
+        background: var(--black);
+      }
+      .lightbox::backdrop {
+        background: rgba(0, 0, 0, 0.85);
+      }
+      .lightbox img {
+        width: 100%;
+        height: auto;
+        max-height: 90vh;
+        object-fit: contain;
+      }
+      .lightbox__close {
+        position: absolute;
+        right: 8px;
+        top: 6px;
+        width: 40px;
+        height: 40px;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(10, 10, 11, 0.8);
+        color: var(--gold-light);
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+      }
+    </style>
+  </body>
+</html>
