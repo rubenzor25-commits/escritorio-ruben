@@ -1,0 +1,646 @@
+{
+ "checked": "18 de octubre de 2026",
+ "intro": "Para un vídeo largo de una persona hablando importan tres cosas: 4K (para recortar a 9:16 sin perder nitidez), que aguante horas sin calentarse y que funcione en Mac sin drivers. El micrófono integrado pesa menos: un micro externo mejora más el vídeo que subir de cámara.",
+ "top3": [
+  {
+   "id": "iphone-continuity-camera-neewer-sp08",
+   "why": "Es el mejor primer paso: ya tienes el móvil y el soporte cuesta 26 €. Para vídeos largos y shorts graba en 4K con la app Cámara y pasa los archivos por AirDrop (Continuity Camera solo llega a 1080p); si te molesta tener el móvil ocupado, da el salto a la Link 2C."
+  },
+  {
+   "id": "insta360-link-2c",
+   "why": "La mejor webcam por el dinero (unos 170 €): 4K, sensor de 1/2 pulgada, enfoque rápido, modo retrato y plug and play en Mac. No se sobrecalienta como una cámara, así que sirve para sesiones largas; la elijo antes que la Link 2 porque el gimbal no hace falta sentado a una mesa, y antes que la MX Brio por precio y modo retrato."
+  },
+  {
+   "id": "dji-osmo-pocket-3",
+   "why": "La mejor imagen por euro (289 €): sensor de 1 pulgada, 4K60 y vertical nativo para shorts. Va tercera porque es una cámara y no una webcam, y puede calentarse en grabaciones de más de una hora; mejor opción que una Sony ZV-E10 (649 €) si no quieres gastar tanto."
+  }
+ ],
+ "items": [
+  {
+   "id": "sony-zv-e10-ii-kit-16-50",
+   "name": "Sony ZV-E10 II + objetivo 16-50 mm",
+   "brand": "Sony",
+   "type": "Cámara sin espejo (APS-C)",
+   "price": 845,
+   "store": "PcComponentes (vendedor externo Black Pearl SARL)",
+   "url": "https://www.pccomponentes.com/camara-mirrorless-sony-zv-e10-ii-26-mp-3-1x-zoom-optico-16-50mm-sensor-cmos-wifi-4k-ultra-hd",
+   "alt": [
+    {
+     "store": "Amazon.es (vendido por Amazon)",
+     "url": "https://www.amazon.es/dp/B0D8QRHQNL",
+     "price": 1099
+    },
+    {
+     "store": "MediaMarkt (vendedor DigiFuse Direct)",
+     "url": "https://www.mediamarkt.es/es/product/_pack-camara-evil-sony-zv-e10-ii-26-megapixel-exmor-r-cmos-3840-x-2160-4k-uhd-a-60-fps-negro-145962337.html",
+     "price": 998.91
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/71UB5NyJkUL._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor APS-C de 26 MP",
+    "4K hasta 60p, 10 bits 4:2:2",
+    "Objetivo 16-50 mm con zoom motorizado",
+    "Pantalla abatible lateral",
+    "Webcam USB UVC sin drivers",
+    "Micrófono direccional interno con paraviento",
+    "Eye AF y modo Product Showcase"
+   ],
+   "rating": "4,6/5 (243 opiniones del kit en Amazon.es)",
+   "pros": [
+    "La mejor imagen de la lista: sensor grande, fondo desenfocado y buena luz baja",
+    "Autoenfoque con seguimiento de cara muy fiable",
+    "4K60 con margen de sobra para recortar a 9:16",
+    "Sin límite de tiempo por clip; se alimenta por USB-C mientras graba"
+   ],
+   "cons": [
+    "Los 845 € son de un vendedor externo: en Amazon y MediaMarkt ronda 1.000-1.100 €",
+    "Más grande y complicada que una webcam; en 4K puede calentarse",
+    "Graba en 16:9: el vertical sale de recortar el 4K"
+   ],
+   "eligela_si": "Quieres la mejor imagen posible, no te importa gastar unos 850 € y aprender a usar una cámara de verdad."
+  },
+  {
+   "id": "canon-eos-r50-kit-18-45",
+   "name": "Canon EOS R50 + objetivo RF-S 18-45 mm",
+   "brand": "Canon",
+   "type": "Cámara sin espejo (APS-C)",
+   "price": 699,
+   "store": "PcComponentes (vendido y enviado por PcComponentes)",
+   "url": "https://www.pccomponentes.com/canon-eos-r50-24-2mp-wifi-plus-rf-s-18-45mm-f4-5-6-3-is-stm",
+   "alt": [
+    {
+     "store": "MediaMarkt",
+     "url": "https://www.mediamarkt.es/es/product/_camara-evil-canon-eos-r50-bkrfs18-45no-ff-242-mp-4k-uhd-75-cm-wi-fi-negro-1548792.html",
+     "price": 899
+    }
+   ],
+   "image": "https://img.pccomponentes.com/articles/1073/10738766/1677-canon-eos-r50-242mp-wifi-rf-s-18-45mm-f45-63-is-stm.jpg",
+   "specs": [
+    "Sensor APS-C de 24,2 MP",
+    "4K30 sobremuestreado desde 6K; Full HD hasta 120p",
+    "Dual Pixel AF II con detección de cara",
+    "Pantalla abatible",
+    "Webcam USB UVC sin software (según el anuncio de Amazon)",
+    "Entrada de micro de 3,5 mm y zapata multifunción",
+    "Kit con objetivo 18-45 mm"
+   ],
+   "rating": "4,7/5 (85 opiniones en PcComponentes)",
+   "pros": [
+    "Buena piel y colores muy agradables sin retocar",
+    "Autoenfoque muy bueno con seguimiento de cara",
+    "Entrada de micro de 3,5 mm para audio externo",
+    "Ligera y fácil de usar"
+   ],
+   "cons": [
+    "Solo 4K a 30p (sin 4K60)",
+    "En 4K y sesiones largas puede avisar de calor; la batería dura poco, así que conviene alimentarla por USB-C",
+    "El 18-45 es poco luminoso (f/4.5-6.3): con poca luz sube el ruido"
+   ],
+   "eligela_si": "Prefieres Canon y quieres imagen de cámara por menos de 700 €, con 4K30 de sobra para vídeos y shorts."
+  },
+  {
+   "id": "sony-zv-e10-kit-16-50",
+   "name": "Sony ZV-E10 + objetivo 16-50 mm (ZV-E10K)",
+   "brand": "Sony",
+   "type": "Cámara sin espejo (APS-C)",
+   "price": 649,
+   "store": "Amazon.es (vendido por Amazon)",
+   "url": "https://www.amazon.es/dp/B0FLQ1MF47",
+   "alt": [
+    {
+     "store": "PcComponentes (vendedor externo Black Pearl SARL)",
+     "url": "https://www.pccomponentes.com/camara-mirrorless-sony-zv-e10-242mp-16-50mm-aps-c-wifi-bluetooth",
+     "price": 524.99
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/81Ow71zhJ-L._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor APS-C de 24,2 MP",
+    "4K sobremuestreado desde 6K y Full HD hasta 120p",
+    "Kit con objetivo power zoom 16-50 mm",
+    "Pantalla abatible lateral",
+    "Webcam USB plug and play en Full HD",
+    "Eye AF en tiempo real"
+   ],
+   "rating": "4,5/5 (154 opiniones en Amazon.es)",
+   "pros": [
+    "Imagen de cámara APS-C a buen precio",
+    "Enfoque con seguimiento de ojo muy bueno",
+    "Se puede alimentar por USB-C mientras graba",
+    "Objetivos intercambiables para crecer"
+   ],
+   "cons": [
+    "Es el modelo de 2021: sin 4K60 ni 10 bits",
+    "Algunos usuarios ven avisos de temperatura en 4K tras unos 30 minutos",
+    "Por USB como webcam solo da Full HD"
+   ],
+   "eligela_si": "Quieres una cámara de verdad por menos de 650 € y vas a grabar con un buen micro externo."
+  },
+  {
+   "id": "sony-zv-1-ii",
+   "name": "Sony ZV-1 II",
+   "brand": "Sony",
+   "type": "Cámara compacta de vlog",
+   "price": 602.93,
+   "store": "Amazon.es (vendido por Amazon)",
+   "url": "https://www.amazon.es/dp/B0C5J5SZLL",
+   "alt": [
+    {
+     "store": "PcComponentes (vendedor externo Black Pearl SARL)",
+     "url": "https://www.pccomponentes.com/camara-compacta-sony-zv-1-ii-201mp-zoom-optico-18-50mm-wifi-4k-pantalla-tactil-negra",
+     "price": 540
+    },
+    {
+     "store": "MediaMarkt (vendedor DigiFuse Direct)",
+     "url": "https://www.mediamarkt.es/es/product/_camara-compacta-sony-zv-1-ii-20-megapixel-4k-ultra-hd-negro-168869183.html",
+     "price": 699
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/71f5rIqpj8L._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor de 1 pulgada de 20,1 MP",
+    "Zoom gran angular 18-50 mm",
+    "4K30 y Full HD hasta 120p",
+    "Pantalla abatible",
+    "Micrófono integrado con paraviento",
+    "Webcam USB UVC",
+    "Eye AF en tiempo real"
+   ],
+   "rating": "4,3/5 (129 opiniones en Amazon.es)",
+   "pros": [
+    "El gran angular de 18 mm te encuadra a ti y la pantalla de al lado aunque estés cerca",
+    "Pequeña y todo en uno: sin objetivos que comprar",
+    "Mejor micro integrado que cualquier webcam",
+    "Autoenfoque con seguimiento de cara"
+   ],
+   "cons": [
+    "Se calienta en 4K (las reseñas lo marcan como punto débil): mejor 1080p o alimentación por USB-C",
+    "Solo 4K30 y batería pequeña",
+    "El objetivo es fijo y no se cambia"
+   ],
+   "eligela_si": "Quieres una cámara pequeña de escritorio con gran angular y buen micro, sin comprar objetivos."
+  },
+  {
+   "id": "dji-osmo-pocket-4",
+   "name": "DJI Osmo Pocket 4 (Pack Estándar)",
+   "brand": "DJI",
+   "type": "Cámara de bolsillo con gimbal",
+   "price": 449,
+   "store": "Amazon.es (vendido por Amazon)",
+   "url": "https://www.amazon.es/dp/B0FKTBGNR8",
+   "alt": [
+    {
+     "store": "MediaMarkt",
+     "url": "https://www.mediamarkt.es/es/product/_camara-deportiva-dji-osmo-pocket-4-pack-estandar-4k-4h-autonomia-sensor-cmos-de-1-estabilizacion-de-3-ejes-y-pantalla-tactil-giratoria-negro-1627112.html",
+     "price": 449
+    },
+    {
+     "store": "DJI Store España",
+     "url": "https://store.dji.com/es/product/osmo-pocket-4",
+     "price": 499
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/61ZrjKGwSNL._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor CMOS de 1 pulgada",
+    "4K hasta 60p (4K/240 en cámara lenta)",
+    "Vertical nativo 9:16 (3K y 1080p)",
+    "3 micrófonos",
+    "107 GB internos y microSD",
+    "Webcam USB UVC hasta 4K",
+    "Hasta 240 min de autonomía (1080p/24)"
+   ],
+   "rating": "4,4/5 (362 opiniones en Amazon.es)",
+   "pros": [
+    "Graba vertical 9:16 de verdad: ideal para TikTok e Instagram",
+    "107 GB de memoria interna, no necesitas tarjeta",
+    "Imagen de sensor de 1 pulgada, buena con poca luz",
+    "Cabe en el bolsillo: te vale también fuera del escritorio"
+   ],
+   "cons": [
+    "160 € más que la Pocket 3 con un resultado de escritorio parecido",
+    "Como la Pocket 3, puede avisar de calor en grabaciones largas en 4K",
+    "Pantalla pequeña para encuadrar"
+   ],
+   "eligela_si": "Quieres lo último de DJI con vertical nativo y 4K60, y vas a grabar también fuera de casa."
+  },
+  {
+   "id": "obsbot-tiny-3",
+   "name": "OBSBOT Tiny 3",
+   "brand": "OBSBOT",
+   "type": "Webcam 4K con gimbal e IA",
+   "price": 379,
+   "store": "Amazon.es (vendido por OBSBOT Official Store)",
+   "url": "https://www.amazon.es/dp/B0G636CXQM",
+   "alt": [
+    {
+     "store": "PcComponentes (vendedor externo Digital Universe ES)",
+     "url": "https://www.pccomponentes.com/webcam-obsbot-tiny-3-usb-c-auto-tracking-control-por-voz",
+     "price": 432.04
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/51SyUcsLVCL._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor CMOS de 1/1,28 pulgadas",
+    "4K a 30 fps y 1080p a 120 fps",
+    "Gimbal de 2 ejes con seguimiento IA 2.0",
+    "Autoenfoque Dual All-Pixel PDAF",
+    "3 micrófonos con audio espacial",
+    "Control por gestos y por voz",
+    "Software OBSBOT Center para macOS"
+   ],
+   "rating": "4,4/5 (243 opiniones en Amazon.es)",
+   "pros": [
+    "Sensor grande para una webcam: buena luz baja",
+    "Te sigue si te mueves o miras a las pantallas laterales",
+    "Plug and play por USB-C",
+    "3 micrófonos con varios modos de audio"
+   ],
+   "cons": [
+    "Cara: 379 € frente a unos 170 € de la Link 2C",
+    "El seguimiento puede moverse cuando no quieres (hay que desactivarlo)",
+    "Sigue siendo 4K a 30p"
+   ],
+   "eligela_si": "Te mueves mucho al grabar y quieres que la cámara te siga sola con la mejor imagen de webcam."
+  },
+  {
+   "id": "dji-osmo-pocket-3",
+   "name": "DJI Osmo Pocket 3",
+   "brand": "DJI",
+   "type": "Cámara de bolsillo con gimbal",
+   "price": 289,
+   "store": "Amazon.es (vendido por Amazon)",
+   "url": "https://www.amazon.es/dp/B0CG19QXWD",
+   "alt": [
+    {
+     "store": "MediaMarkt",
+     "url": "https://www.mediamarkt.es/es/product/_camara-deportiva-dji-osmo-pocket-3-4k120-fps-pantalla-giratoria-2-cmos-de-1-estabilizacion-mecanica-3-ejes-negro-1564117.html",
+     "price": 289
+    },
+    {
+     "store": "DJI Store España",
+     "url": "https://store.dji.com/es/product/osmo-pocket-3",
+     "price": 288
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/61tukvVUMiL._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor CMOS de 1 pulgada",
+    "4K hasta 120p (4K60 normal)",
+    "Pantalla táctil de 2 pulgadas que gira: vídeo vertical 9:16 nativo",
+    "Estabilizador mecánico de 3 ejes",
+    "Micrófonos estéreo integrados",
+    "Webcam USB UVC hasta 4K30 (firmware 2024)",
+    "Graba en tarjeta microSD"
+   ],
+   "rating": "4,5/5 (3.742 opiniones en Amazon.es)",
+   "pros": [
+    "La mejor imagen por euro de la lista: sensor de 1 pulgada por 289 €",
+    "Vertical nativo para shorts, sin recortar",
+    "Webcam 4K30 por USB-C sin drivers",
+    "Pequeña: se monta en los trípodes que ya tienes"
+   ],
+   "cons": [
+    "Puede sobrecalentarse en sesiones largas (más de 1 hora) o cargando; DJI pide dejarla ventilada",
+    "Batería de unas 2 horas: para sesiones largas hay que alimentarla por USB-C",
+    "Para audio bueno necesita un micro DJI Mic (se compra aparte)"
+   ],
+   "eligela_si": "Quieres calidad de cámara de 1 pulgada y vertical nativo por menos de 300 € y no te importa vigilar el calor."
+  },
+  {
+   "id": "insta360-link-2-pro",
+   "name": "Insta360 Link 2 Pro",
+   "brand": "Insta360",
+   "type": "Webcam 4K con gimbal e IA",
+   "price": 269,
+   "store": "Amazon.es (vendido por Insta360 Official Store EU)",
+   "url": "https://www.amazon.es/dp/B0G3T1QKWL",
+   "alt": [
+    {
+     "store": "Insta360 tienda oficial",
+     "url": "https://store.insta360.com/es/product/link-2-pro?lang=es",
+     "price": 269
+    },
+    {
+     "store": "PcComponentes (vendedor externo Black Pearl SARL)",
+     "url": "https://www.pccomponentes.com/webcam-insta360-link2-pro-4k-ultra-hd-zoom-digital-4x-hdr-usb-c",
+     "price": 279
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/61BmGGgAcuL._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor de 1/1,3 pulgadas",
+    "4K a 30 fps",
+    "Gimbal con seguimiento IA y control por gestos",
+    "2 micrófonos con captación direccional",
+    "Modo retrato 4K, Desk View y pizarra",
+    "Compatible con Stream Deck",
+    "Sin drivers en Mac; app Link Controller"
+   ],
+   "rating": "4,6/5 (450 opiniones en Amazon.es)",
+   "pros": [
+    "Sensor más grande que la Link 2: imagen más limpia con poca luz",
+    "Gimbal con seguimiento por IA y gestos",
+    "Modo retrato para vídeo vertical",
+    "Funciona sin drivers en Mac"
+   ],
+   "cons": [
+    "40 € más que la Link 2 por mejor sensor y micrófonos",
+    "Sigue siendo webcam: 4K a 30p",
+    "Más voluminosa que la Link 2C"
+   ],
+   "eligela_si": "Quieres la mejor webcam con gimbal por menos de 300 € y te importa la luz baja."
+  },
+  {
+   "id": "insta360-link-2",
+   "name": "Insta360 Link 2",
+   "brand": "Insta360",
+   "type": "Webcam 4K con gimbal e IA",
+   "price": 211.99,
+   "store": "PcComponentes (vendido y enviado por PcComponentes)",
+   "url": "https://www.pccomponentes.com/camara-web-insta360-link-2-4k-ultra-hd-sensor-1-2-zoom-ia",
+   "alt": [
+    {
+     "store": "Amazon.es (vendido por Insta360 Direct Store)",
+     "url": "https://www.amazon.es/dp/B0DDTH3HX8",
+     "price": 229.99
+    },
+    {
+     "store": "Insta360 tienda oficial",
+     "url": "https://store.insta360.com/es/product/link-2?lang=es",
+     "price": 229.99
+    }
+   ],
+   "image": "https://img.pccomponentes.com/articles/1097/10975250/1763-camara-web-insta360-link-2-4k-ultra-hd-sensor-1-2-zoom-ia.jpg",
+   "specs": [
+    "Sensor de 1/2 pulgada",
+    "4K30 con HDR",
+    "Autoenfoque por detección de fase (PDAF)",
+    "Gimbal de 2 ejes con seguimiento IA y gestos",
+    "Modo retrato 4K, escritorio y pizarra",
+    "Micrófonos con cancelación de ruido por IA",
+    "Sin drivers en Mac; app Link Controller"
+   ],
+   "rating": "4,6/5 (1.666 opiniones en Amazon.es)",
+   "pros": [
+    "Buena calidad 4K y enfoque rápido",
+    "El gimbal te mantiene en cuadro si te mueves o giras hacia las pantallas",
+    "Modo retrato para shorts",
+    "No se sobrecalienta como una cámara"
+   ],
+   "cons": [
+    "Para YouTube conviene un micro externo",
+    "Con poca luz se queda corta frente a una cámara",
+    "4K solo a 30 fps"
+   ],
+   "eligela_si": "Quieres una webcam 4K con seguimiento y plug and play por unos 210 €."
+  },
+  {
+   "id": "obsbot-tiny-2-lite",
+   "name": "OBSBOT Tiny 2 Lite",
+   "brand": "OBSBOT",
+   "type": "Webcam 4K con gimbal e IA",
+   "price": 179,
+   "store": "Amazon.es (vendido por OBSBOT Official Store)",
+   "url": "https://www.amazon.es/dp/B0CZ6XY78Y",
+   "alt": [
+    {
+     "store": "PcComponentes (vendedor externo Tienda Audiovisual)",
+     "url": "https://www.pccomponentes.com/webcam-obsbot-tiny-2-lite-4k-auto-tracking-microfonos-duales",
+     "price": 198.44
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/51WarvcFlCL._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor de 1/2 pulgada",
+    "4K30 y 1080p60 con HDR",
+    "Gimbal de 2 ejes (300° / 180°) con seguimiento IA",
+    "Modo vertical y horizontal",
+    "2 micrófonos",
+    "Zoom digital 4x y control por gestos",
+    "Software OBSBOT Center para macOS"
+   ],
+   "rating": "4,4/5 (2.003 opiniones en Amazon.es)",
+   "pros": [
+    "Gimbal y seguimiento IA por menos de 180 €",
+    "Modo vertical para shorts",
+    "Muy probada: más de 2.000 opiniones",
+    "Control por gestos"
+   ],
+   "cons": [
+    "Se calienta con el uso (el propio fabricante lo avisa)",
+    "Es el modelo anterior: la Tiny 3 Lite es más nueva y cuesta 229 €",
+    "Micrófono básico"
+   ],
+   "eligela_si": "Quieres seguimiento por IA y modo vertical gastando menos de 180 €."
+  },
+  {
+   "id": "logitech-mx-brio",
+   "name": "Logitech MX Brio",
+   "brand": "Logitech",
+   "type": "Webcam 4K",
+   "price": 176.99,
+   "store": "Amazon.es (vendido por Amazon)",
+   "url": "https://www.amazon.es/dp/B0CSSVP435",
+   "alt": [
+    {
+     "store": "PcComponentes (vendido y enviado por PcComponentes)",
+     "url": "https://www.pccomponentes.com/logitech-mx-brio-webcam-para-colaboracion-y-streaming-4k-con-dos-microfonos-reductores-de-ruido-gris",
+     "price": 176.99
+    },
+    {
+     "store": "MediaMarkt",
+     "url": "https://www.mediamarkt.es/es/product/_webcam-logitech-mx-brio-ultra-hd-4k-correccion-de-iluminacion-automatica-autoencuadre-microfonosreduccion-de-ruido-tapa-de-privacidad-gris-1569645.html",
+     "price": 183
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/61uCVMih2qL._AC_SL1500_.jpg",
+   "specs": [
+    "4K a 30 fps o 1080p a 60 fps",
+    "Sensor Sony STARVIS de 8,5 MP",
+    "Campo de visión de 90°, 78° o 65°",
+    "2 micrófonos con reducción de ruido por IA",
+    "Show Mode para enseñar notas del escritorio",
+    "Tapa de privacidad",
+    "USB-C (USB 3 para 4K)"
+   ],
+   "rating": "4,6/5 (924 opiniones en Amazon.es)",
+   "pros": [
+    "Muy buena imagen y piel natural",
+    "Dos micrófonos buenos para ser webcam",
+    "Controles manuales finos (ISO, obturador, balance de blancos)",
+    "Marca fiable y funciona en Mac sin drivers"
+   ],
+   "cons": [
+    "Sin gimbal ni seguimiento: encuadre fijo",
+    "Voluminosa para colgar de un monitor fino",
+    "Necesita un puerto USB 3 para el 4K"
+   ],
+   "eligela_si": "Quieres una webcam 4K de marca fiable, con buena imagen y buen micro, sin complicaciones."
+  },
+  {
+   "id": "insta360-link-2c",
+   "name": "Insta360 Link 2C",
+   "brand": "Insta360",
+   "type": "Webcam 4K",
+   "price": 169.99,
+   "store": "Amazon.es (vendido por Insta360 Official Store EU)",
+   "url": "https://www.amazon.es/dp/B0DDTGY8FG",
+   "alt": [
+    {
+     "store": "PcComponentes (vendedor externo Tecno Out)",
+     "url": "https://www.pccomponentes.com/camara-web-insta360-link-2c-4k-ultra-hd-sensor-1-2-ai-zoom-usb",
+     "price": 162.45
+    },
+    {
+     "store": "MediaMarkt (vendedor ePolis)",
+     "url": "https://www.mediamarkt.es/es/product/_webcam-link-2c-insta360-negro-145577900.html",
+     "price": 167.4
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/51ueipcvQRL._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor de 1/2 pulgada",
+    "4K30 con HDR",
+    "Autoenfoque por detección de fase (PDAF)",
+    "Encuadre automático digital (sin gimbal)",
+    "Modo retrato 4K, escritorio y pizarra",
+    "Micrófonos con cancelación de ruido por IA",
+    "Sin drivers en Mac"
+   ],
+   "rating": "4,6/5 (1.358 opiniones en Amazon.es)",
+   "pros": [
+    "Mismo sensor y 4K que la Link 2 por unos 60 € menos",
+    "Pequeña y ligera: se cuelga de cualquier monitor",
+    "Enfoque rápido y buena luz baja para su precio",
+    "Modo retrato para shorts"
+   ],
+   "cons": [
+    "Sin gimbal: si te mueves de lado sales de cuadro",
+    "Micrófono normal: mejor uno externo",
+    "4K solo a 30 fps"
+   ],
+   "eligela_si": "Quieres la mejor webcam 4K por poco dinero y tener el set siempre listo."
+  },
+  {
+   "id": "elgato-facecam-mk2",
+   "name": "Elgato Facecam MK.2",
+   "brand": "Elgato",
+   "type": "Webcam Full HD 60 fps",
+   "price": 99.99,
+   "store": "Amazon.es (vendido por Amazon)",
+   "url": "https://www.amazon.es/dp/B0CW1S7XP5",
+   "alt": [
+    {
+     "store": "PcComponentes (vendido y enviado por PcComponentes)",
+     "url": "https://www.pccomponentes.com/elgato-facecam-mk2-webcam-para-streaming-fullhd-hdr-negra",
+     "price": 117.99
+    },
+    {
+     "store": "Elgato tienda oficial",
+     "url": "https://www.elgato.com/es/es/p/facecam-mk2",
+     "price": 119.99
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/61J7cBOVGWL._AC_SL1500_.jpg",
+   "specs": [
+    "Sensor Sony STARVIS de 1/2,5 pulgadas",
+    "1080p60 sin comprimir por USB 3 (HDR a 1080p30)",
+    "Objetivo f/2.4 de 24 mm y 84° de visión",
+    "Enfoque fijo de 30 a 120 cm",
+    "Sin micrófono integrado",
+    "Software Camera Hub (macOS 13.3 o superior)",
+    "USB-C y tapa de privacidad"
+   ],
+   "rating": "4,3/5 (1.598 opiniones en Amazon.es)",
+   "pros": [
+    "Imagen limpia y colores naturales a 60 fps",
+    "Vídeo sin comprimir por USB 3: calidad estable",
+    "Enfoque fijo: no se pierde ni busca",
+    "Buen precio para ser Elgato"
+   ],
+   "cons": [
+    "Solo Full HD: recortar a vertical pierde nitidez",
+    "No tiene micrófono: necesitas uno aparte",
+    "Necesita USB 3 para la mejor calidad"
+   ],
+   "eligela_si": "Quieres una webcam Full HD muy limpia por unos 100 € y vas a usar un micro externo."
+  },
+  {
+   "id": "logitech-c920s",
+   "name": "Logitech C920S Pro HD",
+   "brand": "Logitech",
+   "type": "Webcam Full HD",
+   "price": 66.8,
+   "store": "Amazon.es (vendido por Amazon)",
+   "url": "https://www.amazon.es/dp/B07MM4V7NR",
+   "alt": [
+    {
+     "store": "MediaMarkt (vendedor CiberElectro)",
+     "url": "https://www.mediamarkt.es/es/product/_webcam-c920s-hd-pro-logitech-negro-94871439.html",
+     "price": 71.84
+    },
+    {
+     "store": "PcComponentes (vendedor externo Locurainformatica)",
+     "url": "https://www.pccomponentes.com/logitech-c920s-pro-webcam-full-hd-1080p-30fps-con-correccion-de-iluminacion-automatica",
+     "price": 74.63
+    }
+   ],
+   "image": "https://m.media-amazon.com/images/I/61-6uAf8soL._AC_SL1500_.jpg",
+   "specs": [
+    "Full HD 1080p a 30 fps",
+    "Enfoque automático",
+    "Corrección de luz RightLight 2",
+    "2 micrófonos estéreo",
+    "Tapa de privacidad",
+    "USB-A: funciona sin drivers en Mac"
+   ],
+   "rating": "4,6/5 (10.587 opiniones en Amazon.es)",
+   "pros": [
+    "Probadísima: funciona con todo y sin drivers",
+    "Muy barata",
+    "Tiene micrófono y tapa de privacidad",
+    "Fácil de colocar en un monitor"
+   ],
+   "cons": [
+    "Solo 1080p30: poco margen para recortar shorts",
+    "Con poca luz la imagen queda granulada y blanda",
+    "Diseño veterano: colores y rango dinámico flojos"
+   ],
+   "eligela_si": "Solo quieres empezar con una webcam muy barata y fiable."
+  },
+  {
+   "id": "iphone-continuity-camera-neewer-sp08",
+   "name": "Tu iPhone como webcam (Continuity Camera) + soporte NEEWER SP08",
+   "brand": "Apple / NEEWER",
+   "type": "Usar el iPhone",
+   "price": 25.99,
+   "store": "Amazon.es (soporte NEEWER SP08, vendido por Amazon)",
+   "url": "https://www.amazon.es/dp/B0DBCSMRRW",
+   "alt": [],
+   "image": "https://m.media-amazon.com/images/I/61j7TX4eIRL._AC_SL1500_.jpg",
+   "specs": [
+    "Continuity Camera: iPhone XR o posterior con iOS 16+ y Mac con macOS Ventura o posterior",
+    "Funciona por cable USB-C o sin cables (Wi-Fi y Bluetooth)",
+    "Center Stage, Desk View, modo Retrato y Studio Light",
+    "Continuity Camera da como máximo 1080p",
+    "Para 4K: grabar con la app Cámara del iPhone y pasar el archivo por AirDrop",
+    "Soporte NEEWER SP08: magnético MagSafe (iPhone 12 o posterior), se cuelga del monitor o se apoya en la mesa, base Arca para tus trípodes"
+   ],
+   "rating": "Soporte NEEWER SP08: 4,4/5 (455 opiniones en Amazon.es)",
+   "pros": [
+    "Casi gratis si ya tienes iPhone: solo pagas el soporte (26 €)",
+    "La cámara del iPhone supera a cualquier webcam de menos de 200 €",
+    "En Mac funciona sin instalar nada y el vertical sale girando el móvil",
+    "Puedes probarlo semanas antes de gastar más"
+   ],
+   "cons": [
+    "Continuity Camera llega a 1080p: para 4K hay que grabar con la app Cámara y copiar los archivos",
+    "El iPhone queda ocupado en la mesa y se calienta o gasta batería si no va conectado a cable",
+    "Si el borde superior del monitor es muy grueso, el soporte puede no encajar: usa la base Arca en un trípode"
+   ],
+   "eligela_si": "Ya tienes iPhone y quieres empezar hoy por 26 € antes de gastar más."
+  }
+ ]
+}

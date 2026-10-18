@@ -143,19 +143,6 @@ export const compra: Producto[] = [
     porque: 'Para que el MSI vaya a 155 Hz. Por HDMI se queda en 100 Hz.',
     datos: ['DisplayPort 1.4', '2 m'],
   },
-  {
-    id: 'silla',
-    cat: 'La silla',
-    nombre: 'Silla Owlotech Summit',
-    precio: 149.99,
-    tienda: 'PcComponentes',
-    url: 'https://www.pccomponentes.com/owlotech-summit-silla-escritorio-ergonomica-negra',
-    imagen: 'https://img.pccomponentes.com/articles/1083/10830573/1978-owlotech-summit-silla-escritorio-ergonomica-negra.jpg',
-    porque:
-      'Ocho horas al día sentado se notan en la espalda. Es la que más ajustes tiene por su precio: reposabrazos 3D, asiento que se desliza, reposacabezas, malla que no da calor y ruedas que no rayan el suelo.',
-    datos: ['Reposabrazos 3D', 'Reposacabezas', 'Malla', 'Ruedas de PU'],
-    aviso: 'Pruébala antes en la tienda de PcComponentes en Madrid (C/ Cavanilles 35). Plan B: IKEA MARKUS (159 €).',
-  },
 ];
 
 export const opcionales: Producto[] = [
@@ -206,4 +193,5 @@ export const yaTengo: { nombre: string; nota: string }[] = [
   { nombre: 'MacBook Pro M1', nota: 'El mando a distancia desde el salón' },
 ];
 
+// Lo ya decidido. La silla, la cámara y el micro se eligen en sus secciones y se suman aparte.
 export const total = compra.reduce((s, p) => s + p.precio, 0);

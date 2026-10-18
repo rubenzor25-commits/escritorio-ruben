@@ -8,11 +8,19 @@ import '../styles/global.css';
 
 import { Picture, Image, getImage } from 'astro:assets';
 import ProductCard from '../components/ProductCard.astro';
+import ChoiceSection from '../components/ChoiceSection.astro';
+import type { Grupo } from '../components/ChoiceSection.astro';
+import sillasData from '../data/sillas.json';
+import camarasData from '../data/camaras.json';
+import microsData from '../data/micros.json';
 import { compra, opcionales, yaTengo, total } from '../data/compra';
 import logo from '../assets/logo-emblema.png';
 import noche from '../assets/render/noche.png';
 import frontal from '../assets/render/frontal.png';
 import puerta from '../assets/render/puerta.png';
+import set1 from '../assets/render/set-1.png';
+import set2 from '../assets/render/set-2.png';
+import set3 from '../assets/render/set-3.png';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const eur = (v: number, dec = false) => {
@@ -30,11 +38,50 @@ const galeria = [
 const nav = [
   { href: '#queda', label: 'Así queda' },
   { href: '#lista', label: 'La lista' },
+  { href: '#silla', label: 'Silla' },
+  { href: '#camara', label: 'Cámara' },
+  { href: '#micro', label: 'Micro' },
+  { href: '#sets', label: 'Sets' },
   { href: '#total', label: 'Total' },
   { href: '#cuarto', label: 'El cuarto' },
-  { href: '#conexiones', label: 'Conexiones' },
+  { href: '#conexiones', label: 'Cables' },
   { href: '#hermes', label: 'Hermes' },
   { href: '#pendientes', label: 'Pendientes' },
+];
+
+const sillas = sillasData as Grupo;
+const camaras = camarasData as Grupo;
+const micros = microsData as Grupo;
+const elecciones = [
+  { grupo: 'silla', nombre: 'Silla' },
+  { grupo: 'camara', nombre: 'Cámara' },
+  { grupo: 'micro', nombre: 'Micro' },
+];
+
+// Los 3 sets: el 1º de cada top 3 juntos, el 2º juntos y el 3º juntos
+const setImgs = [set1, set2, set3];
+const setFull = await Promise.all(setImgs.map((src) => getImage({ src, width: 2000, format: 'webp' })));
+const topOf = (g: Grupo, n: number) => g.items.find((i) => i.id === g.top3[n].id)!;
+const sets = [0, 1, 2].map((n) => {
+  const piezas = [
+    { grupo: 'silla', etiqueta: 'Silla', o: topOf(sillas, n) },
+    { grupo: 'camara', etiqueta: 'Cámara', o: topOf(camaras, n) },
+    { grupo: 'micro', etiqueta: 'Micro', o: topOf(micros, n) },
+  ];
+  return { n: n + 1, img: setImgs[n], piezas, suma: piezas.reduce((s, p) => s + p.o.price, 0) };
+});
+
+const principios = [
+  { t: 'Calidad donde se nota', d: 'La silla la voy a notar en la espalda todos los días, así que ahí quiero comodidad de verdad. Y la pruebo antes de comprarla.' },
+  { t: 'Calidad-precio en todo lo demás', d: 'Si algo de 150 € hace casi lo mismo que uno de 1.000 €, me quedo el de 150. Pago por lo que uso, no por la marca ni por el número más alto.' },
+  { t: 'Lo justo ahora, lo grande después', d: 'Compro lo que necesito hoy y lo cambio cuando de verdad haga falta. El Mac es el mejor ejemplo: más abajo te cuento por qué.' },
+];
+
+const macLogica = [
+  { t: 'Hoy: Mac mini M6 de 24 GB por 1.509 €', d: 'Hermes y la IA trabajan en la nube con mi suscripción, así que el Mac solo coordina, edita vídeo y mueve las tres pantallas. Para eso va sobrado.' },
+  { t: 'Lo que no compro: el M5 Pro de 48 GB por 2.679 €', d: 'Son 1.170 € más por memoria para ejecutar IA en local, y los modelos que caben ahí todavía no están al nivel de los de la nube. Ese dinero paga años de suscripción.' },
+  { t: 'Dentro de 3-4 años: vender y dar el salto', d: 'Cuando haya modelos locales tan buenos como los mejores de hoy, vendo el Mac mini (los Mac se revenden bien) y me compro un Mac Studio con chips nuevos y mucha memoria. Ahí sí tendrá sentido.' },
+  { t: 'Por qué así', d: 'La memoria del Mac no se puede ampliar: comprar de más hoy es pagar por adelantado algo que no uso. Mejor cambiar de Mac cuando el salto merezca la pena.' },
 ];
 
 const razones = [
@@ -85,7 +132,8 @@ const pendientes = [
   { id: 'e5', t: 'Comprar la estructura E5 antes de que acabe la oferta (hacia el 26 de octubre)' },
   { id: 'tablero', t: 'Pedir el tablero Smart Value 160 × 80 negro' },
   { id: 'resto', t: 'Comprar las pantallas, los brazos, el Mac mini y los cables' },
-  { id: 'silla', t: 'Probar la Owlotech Summit en PcComponentes Madrid (o la MARKUS en IKEA Torrejón)' },
+  { id: 'silla', t: 'Probar en tienda las sillas del top 3 y elegir una (sección Silla)' },
+  { id: 'camara', t: 'Elegir la cámara y el micro (secciones Cámara y Micro)' },
   { id: 'wifi', t: 'Probar el Wi-Fi en el cuarto; si va flojo, comprar el PLC' },
   { id: 'novia', t: 'Que mi novia me pase las medidas del tocador y de la cama (135 o 150)' },
   { id: 'montar', t: 'Montar la mesa a 5-8 cm de la pared y los brazos' },
@@ -117,7 +165,7 @@ const pendientes = [
       <nav class="top__nav" aria-label="Secciones">
         {nav.map((n) => <a href={n.href}>{n.label}</a>)}
       </nav>
-      <a class="top__total" href="#total" aria-label={`Total: ${totalRedondo}`}>{totalRedondo}</a>
+      <a class="top__total" href="#total" aria-label="Ver el total" id="top-total">{totalRedondo}</a>
     </header>
 
     <main id="inicio">
@@ -144,7 +192,7 @@ const pendientes = [
             compro, por qué lo compro y cuánto cuesta.
           </p>
           <dl class="hero__stats">
-            <div><dt>Total</dt><dd>{totalRedondo}</dd></div>
+            <div><dt>Total</dt><dd id="hero-total">{totalRedondo}</dd><dd class="hero__stats-note" id="hero-note">sin silla, cámara ni micro</dd></div>
             <div><dt>Mesa</dt><dd>160 × 80</dd></div>
             <div><dt>Pantallas</dt><dd>40" + 2 × 27"</dd></div>
             <div><dt>Hermes</dt><dd>24/7</dd></div>
@@ -153,6 +201,25 @@ const pendientes = [
             <a class="btn btn--solid" href="#lista">Ver la lista</a>
             <a class="btn" href="#queda">Así va a quedar</a>
           </div>
+        </div>
+      </section>
+
+      <!-- CÓMO ELIJO -->
+      <section id="elijo" class="band band--coal" aria-labelledby="elijo-t">
+        <div class="container">
+          <p class="kicker">Mi forma de comprar</p>
+          <h2 class="section-title" id="elijo-t">Cómo elijo</h2>
+          <ol class="rules">
+            {
+              principios.map((r, i) => (
+                <li>
+                  <span class="rules__n">{String(i + 1).padStart(2, '0')}</span>
+                  <h3>{r.t}</h3>
+                  <p>{r.d}</p>
+                </li>
+              ))
+            }
+          </ol>
         </div>
       </section>
 
@@ -219,8 +286,81 @@ const pendientes = [
         </div>
       </section>
 
+      <ChoiceSection
+        id="silla"
+        grupo="silla"
+        label="esta"
+        light
+        kicker="Lo que todavía no tengo claro"
+        title="La silla"
+        lead="Aquí sí quiero comodidad de verdad: me voy a pasar ocho horas sentado. Son 15 sillas que puedes probar en tiendas de Alcalá de Henares o de Madrid, con su stock. Pruébalas y elige una: se suma sola al total."
+        data={sillas}
+      />
+      <ChoiceSection
+        id="camara"
+        grupo="camara"
+        label="esta"
+        kicker="Para grabar los vídeos"
+        title="La cámara"
+        lead="Para grabarme hablando de economía, IA y tecnología, y que Hermes lo convierta en vídeos largos de YouTube y en shorts para TikTok e Instagram. Tengo trípodes y el móvil para lo rápido, así que busco calidad-precio, no la más cara."
+        data={camaras}
+      />
+      <ChoiceSection
+        id="micro"
+        grupo="micro"
+        label="este"
+        light
+        kicker="Que se me oiga bien"
+        title="El micro"
+        lead="Un micro decente marca más la diferencia que la cámara. Además, Hermes puede limpiar la voz después, así que no hace falta el más caro."
+        data={micros}
+      />
+
+      <!-- LOS 3 SETS -->
+      <section id="sets" class="band" aria-labelledby="sets-t">
+        <div class="container">
+          <p class="kicker">Día y noche</p>
+          <h2 class="section-title" id="sets-t">Los 3 sets</h2>
+          <p class="intro">
+            Así quedaría el escritorio con el número 1 de cada top 3 junto, con el número 2 y con el número 3. Cada imagen muestra el
+            mismo set de día y de noche. Imágenes generadas con IA a partir de las fotos de cada producto.
+          </p>
+          <div class="sets">
+            {
+              sets.map((st) => (
+                <article class="set">
+                  <button type="button" class="gallery__open set__img" data-full={setFull[st.n - 1].src} data-alt={`Set ${st.n} de día y de noche`} aria-label={`Ampliar el set ${st.n}`}>
+                    <Picture src={st.img} alt={`Set ${st.n}: ${st.piezas.map((p) => p.o.name).join(', ')}, de día y de noche`} formats={['webp']} fallbackFormat="webp" widths={[700, 1200, 1800]} sizes="(min-width: 1180px) 1100px, 100vw" />
+                  </button>
+                  <div class="set__info">
+                    <p class="set__n">Set {st.n}</p>
+                    <ul class="set__parts">
+                      {st.piezas.map((p) => (
+                        <li>
+                          <span>{p.etiqueta}</span>
+                          <a href={`#${p.grupo}-${p.o.id}`}>{p.o.name}</a>
+                          <b>{eur(p.o.price, p.o.price % 1 !== 0)}</b>
+                        </li>
+                      ))}
+                    </ul>
+                    <p class="set__sum">Los tres: <b>{eur(st.suma, st.suma % 1 !== 0)}</b></p>
+                    <button
+                      type="button"
+                      class="btn btn--solid js-pick-set"
+                      data-set={JSON.stringify(st.piezas.map((p) => ({ g: p.grupo, id: p.o.id, name: p.o.name, price: p.o.price })))}
+                    >
+                      Elegir este set
+                    </button>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
       <!-- EL TOTAL -->
-      <section id="total" class="band band--light" aria-labelledby="total-t">
+      <section id="total" class="band band--coal" aria-labelledby="total-t">
         <div class="container">
           <p class="kicker">La cuenta</p>
           <h2 class="section-title" id="total-t">El total</h2>
@@ -239,10 +379,21 @@ const pendientes = [
                   </li>
                 ))
               }
+              {
+                elecciones.map((e) => (
+                  <li class="ticket__row ticket__row--pick" data-grupo={e.grupo}>
+                    <span class="ticket__name">
+                      {e.nombre}: <a href={`#${e.grupo}`} class="js-pick-name">por elegir</a>
+                    </span>
+                    <span class="ticket__dots" aria-hidden="true" />
+                    <span class="ticket__price js-pick-price">—</span>
+                  </li>
+                ))
+              }
             </ol>
             <div class="ticket__total">
               <span>Total</span>
-              <strong>{totalRedondo}</strong>
+              <strong id="ticket-total">{totalRedondo}</strong>
             </div>
             <div class="ticket__progress" aria-live="polite">
               <div class="bar"><span id="bar-fill"></span></div>
@@ -251,15 +402,15 @@ const pendientes = [
               </p>
             </div>
             <p class="ticket__foot">
-              Con tu ladrón de enchufes. Los cables van a precio aproximado. Si el Wi-Fi va bien en el cuarto, réstale 64,99 € del
-              PLC y 8 € del cable de red.
+              La silla, la cámara y el micro se suman cuando los eliges en sus secciones. Con tu ladrón de enchufes y los cables a
+              precio aproximado. Si el Wi-Fi va bien en el cuarto, réstale 64,99 € del PLC y 8 € del cable de red.
             </p>
           </div>
         </div>
       </section>
 
       <!-- EL CUARTO -->
-      <section id="cuarto" class="band band--coal" aria-labelledby="cuarto-t">
+      <section id="cuarto" class="band" aria-labelledby="cuarto-t">
         <div class="container">
           <p class="kicker">356 × 280 cm</p>
           <h2 class="section-title" id="cuarto-t">El cuarto</h2>
@@ -364,6 +515,19 @@ const pendientes = [
               ))
             }
           </ol>
+          <div class="mac">
+            <h3>Por qué este Mac (y cuándo cambiarlo)</h3>
+            <ol class="mac__steps">
+              {
+                macLogica.map((m) => (
+                  <li>
+                    <h4>{m.t}</h4>
+                    <p>{m.d}</p>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
           <div class="server">
             <h3>Para dejarlo listo</h3>
             <ul class="ticks ticks--dark">{servidor.map((s) => <li set:html={s.replace(/`([^`]+)`/g, '<code>$1</code>')} />)}</ul>
@@ -426,24 +590,47 @@ const pendientes = [
       };
 
       // Fotos de tienda que no cargan: se cambia por el nombre de la categoría
-      document.querySelectorAll<HTMLImageElement>('.card__media img').forEach((img) => {
+      document.querySelectorAll<HTMLImageElement>('.card__media img, .podium__media img, .opt__media img').forEach((img) => {
         const swap = () => {
           const ph = document.createElement('span');
-          ph.className = 'card__ph';
-          ph.textContent = img.closest('.card')?.querySelector('.card__cat')?.textContent ?? '';
+          const card = img.closest('.card');
+          ph.className = card ? 'card__ph' : 'ph';
+          ph.textContent = (card ? card.querySelector('.card__cat') : img.closest('.opt, .podium__item')?.querySelector('.opt__type, .podium__type'))?.textContent ?? '';
           img.replaceWith(ph);
         };
         if (img.complete && img.naturalWidth === 0) swap();
         else img.addEventListener('error', swap);
       });
 
-      // Lo comprado: marca la tarjeta y la línea del ticket, y recalcula lo que falta
+      // Lo comprado y lo elegido: marca tarjetas y ticket, y recalcula totales
       const KB = 'escritorio-ruben:comprado';
       const KT = 'escritorio-ruben:pendientes';
-      const totalAll = [...document.querySelectorAll<HTMLElement>('.card[data-precio]')]
+      const KE = 'escritorio-ruben:eleccion';
+      type Pick = { id: string; name: string; price: number };
+      const readPicks = (): Record<string, Pick> => {
+        try {
+          return JSON.parse(localStorage.getItem(KE) ?? '{}');
+        } catch {
+          return {};
+        }
+      };
+      const picks = readPicks();
+      const savePicks = () => {
+        try {
+          localStorage.setItem(KE, JSON.stringify(picks));
+        } catch {
+          /* sin almacenamiento */
+        }
+      };
+      const labels: Record<string, string> = { silla: 'silla', camara: 'cámara', micro: 'micro' };
+      const base = [...document.querySelectorAll<HTMLElement>('.card[data-precio]')]
         .filter((c) => c.querySelector('.js-bought'))
         .reduce((s, c) => s + Number(c.dataset.precio), 0);
       const bought = new Set(read(KB));
+      const setText = (id: string, t: string) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = t;
+      };
       const paint = () => {
         let paid = 0;
         document.querySelectorAll<HTMLInputElement>('.js-bought').forEach((i) => {
@@ -454,10 +641,54 @@ const pendientes = [
           document.querySelector(`.ticket__row[data-id="${i.value}"]`)?.classList.toggle('is-done', on);
           if (on && card) paid += Number(card.dataset.precio);
         });
-        document.getElementById('paid')!.textContent = eur(paid);
-        document.getElementById('left')!.textContent = eur(totalAll - paid);
-        (document.getElementById('bar-fill') as HTMLElement).style.width = `${totalAll ? (paid / totalAll) * 100 : 0}%`;
+        let extra = 0;
+        const missing: string[] = [];
+        for (const g of Object.keys(labels)) {
+          const p = picks[g];
+          document.querySelectorAll<HTMLButtonElement>(`.js-pick[data-grupo="${g}"]`).forEach((b) => {
+            const on = !!p && b.dataset.id === p.id;
+            b.setAttribute('aria-pressed', String(on));
+            b.closest('.opt')?.classList.toggle('is-picked', on);
+          });
+          const row = document.querySelector(`.ticket__row--pick[data-grupo="${g}"]`);
+          if (row) {
+            row.querySelector('.js-pick-name')!.textContent = p ? p.name : 'por elegir';
+            row.querySelector('.js-pick-price')!.textContent = p ? eur(p.price) : '—';
+            row.classList.toggle('is-picked', !!p);
+          }
+          if (p) extra += p.price;
+          else missing.push(labels[g]);
+        }
+        const total = base + extra;
+        for (const id of ['top-total', 'hero-total', 'ticket-total']) setText(id, eur(total));
+        const note =
+          missing.length === 0
+            ? 'con todo elegido'
+            : `sin ${missing.length === 1 ? missing[0] : `${missing.slice(0, -1).join(', ')} ni ${missing[missing.length - 1]}`}`;
+        setText('hero-note', note);
+        setText('paid', eur(paid));
+        setText('left', eur(total - paid));
+        (document.getElementById('bar-fill') as HTMLElement).style.width = `${total ? (paid / total) * 100 : 0}%`;
       };
+      document.addEventListener('click', (e) => {
+        const setBtn = (e.target as Element).closest<HTMLButtonElement>('.js-pick-set');
+        if (setBtn) {
+          for (const p of JSON.parse(setBtn.dataset.set ?? '[]') as { g: string; id: string; name: string; price: number }[]) {
+            picks[p.g] = { id: p.id, name: p.name, price: p.price };
+          }
+          savePicks();
+          paint();
+          document.getElementById('total')?.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+        const b = (e.target as Element).closest<HTMLButtonElement>('.js-pick');
+        if (!b) return;
+        const g = b.dataset.grupo!;
+        if (picks[g]?.id === b.dataset.id) delete picks[g];
+        else picks[g] = { id: b.dataset.id!, name: b.dataset.name!, price: Number(b.dataset.price) };
+        savePicks();
+        paint();
+      });
       document.addEventListener('change', (e) => {
         const t = e.target as HTMLInputElement;
         if (t.matches('.js-bought')) {
@@ -910,6 +1141,192 @@ const pendientes = [
         margin: 18px 0 0;
         font-size: 13px;
         color: var(--ink-soft);
+      }
+
+      /* Cómo elijo */
+      .rules {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        gap: clamp(18px, 3vw, 30px);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .rules li {
+        padding: 28px 26px;
+        border: 1px solid var(--line-dark);
+        background: var(--black);
+      }
+      .rules__n {
+        display: block;
+        margin-bottom: 14px;
+        font-family: var(--font-display);
+        font-weight: 300;
+        font-size: 34px;
+        line-height: 1;
+        color: var(--gold);
+      }
+      .rules h3 {
+        margin: 0 0 8px;
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+      }
+      .rules p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .hero__stats-note {
+        margin: 2px 0 0 !important;
+        font-family: var(--font-body) !important;
+        font-size: 11px !important;
+        color: var(--muted) !important;
+        white-space: normal !important;
+      }
+      .ticket__row--pick .ticket__name a {
+        color: var(--gold-deep);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .ticket__row--pick:not(.is-picked) .ticket__price {
+        color: #b3a88f;
+      }
+      .ticket__row--pick.is-picked .ticket__name a {
+        color: var(--ink);
+        text-decoration: none;
+      }
+      /* El Mac */
+      .mac {
+        max-width: 980px;
+        margin: 0 auto clamp(40px, 6vw, 64px);
+      }
+      .mac h3 {
+        margin: 0 0 20px;
+        text-align: center;
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .mac__steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: m;
+      }
+      .mac__steps li {
+        position: relative;
+        padding: 22px 20px 20px;
+        background: var(--coal);
+        border: 1px solid var(--line-dark);
+        border-top: 2px solid var(--gold);
+        counter-increment: m;
+      }
+      .mac__steps h4 {
+        margin: 0 0 8px;
+        font-family: var(--font-display);
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.4;
+        color: var(--gold-light);
+      }
+      .mac__steps p {
+        margin: 0;
+        font-size: 15px;
+        color: var(--muted);
+      }
+
+      /* Los 3 sets */
+      .sets {
+        display: grid;
+        gap: clamp(28px, 5vw, 48px);
+      }
+      .set {
+        display: grid;
+        border: 1px solid var(--line-dark);
+        background: var(--coal);
+      }
+      @media (min-width: 1000px) {
+        .set {
+          grid-template-columns: 2.2fr 1fr;
+        }
+      }
+      .set__img :global(img) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .set__info {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: clamp(20px, 3vw, 30px);
+      }
+      .set__n {
+        margin: 0;
+        font-family: var(--font-display);
+        font-weight: 300;
+        font-size: 28px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .set__parts {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .set__parts li {
+        display: grid;
+        grid-template-columns: 70px 1fr auto;
+        gap: 10px;
+        align-items: baseline;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--line-dark);
+        font-size: 15px;
+      }
+      .set__parts span {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .set__parts a {
+        color: var(--cream);
+        text-decoration: underline;
+        text-decoration-color: var(--line-dark);
+        text-underline-offset: 4px;
+      }
+      .set__parts b {
+        font-family: var(--font-display);
+        font-weight: 400;
+        color: var(--gold-light);
+        white-space: nowrap;
+      }
+      .set__sum {
+        margin: 0;
+        color: var(--muted);
+      }
+      .set__sum b {
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: 22px;
+        color: var(--gold-light);
+      }
+      .set .btn {
+        align-self: flex-start;
+        margin-top: auto;
       }
 
       /* Cuarto */

@@ -1,0 +1,504 @@
+---
+// Sección "elige una": top 3 calidad-precio + todas las opciones de cara a barata.
+// El botón "Elegir" guarda la elección en el navegador y la suma al ticket.
+export interface Opcion {
+  id: string;
+  name: string;
+  brand?: string;
+  type?: string;
+  price: number;
+  store: string;
+  url: string;
+  alt?: { store: string; url: string; price?: number }[];
+  image?: string;
+  specs?: string[];
+  rating?: string;
+  pros?: string[];
+  cons?: string[];
+  eligela_si?: string;
+  try?: { store: string; address?: string; stock?: string }[];
+}
+export interface Grupo {
+  checked: string;
+  intro: string;
+  top3: { id: string; why: string }[];
+  items: Opcion[];
+}
+interface Props {
+  id: string;
+  grupo: string;
+  kicker: string;
+  title: string;
+  lead: string;
+  data: Grupo;
+  light?: boolean;
+  label: string;
+}
+const { id, grupo, kicker, title, lead, data, light = false, label } = Astro.props;
+const eur = (v: number) => {
+  const [ent, frac] = v.toFixed(v % 1 ? 2 : 0).split('.');
+  return `${ent.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}${frac ? `,${frac}` : ''} €`;
+};
+const items = [...data.items].sort((a, b) => b.price - a.price);
+const byId = new Map(items.map((i) => [i.id, i]));
+const top = data.top3.map((t, n) => ({ ...t, n: n + 1, item: byId.get(t.id) })).filter((t) => t.item);
+const medal = ['1º', '2º', '3º'];
+// "Amazon.es (vendido por Amazon)" → botón "Amazon.es" y la letra pequeña aparte
+const split = (store: string) => {
+  const m = store.match(/^(.*?)\s*\((.*)\)$/);
+  return m ? { short: m[1], detail: m[2] } : { short: store, detail: '' };
+};
+const isTop = new Map(top.map((t) => [t.id, t.n]));
+---
+
+<section id={id} class:list={['band', 'choice', { 'band--light': light }]} aria-labelledby={`${id}-t`} data-grupo={grupo}>
+  <div class="container">
+    <p class="kicker">{kicker}</p>
+    <h2 class="section-title" id={`${id}-t`}>{title}</h2>
+    <p class="intro">{lead}</p>
+    {data.intro && <p class="choice__tip">{data.intro}</p>}
+
+    <h3 class="choice__h">Top 3 calidad-precio</h3>
+    <ol class="podium">
+      {
+        top.map((t) => (
+          <li class:list={['podium__item', `podium__item--${t.n}`]}>
+            <span class="podium__medal">{medal[t.n - 1]}</span>
+            <div class="podium__media">
+              {t.item!.image ? <img src={t.item!.image} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" /> : <span class="ph">{t.item!.type}</span>}
+            </div>
+            <div class="podium__body">
+              <p class="podium__type">{t.item!.type}</p>
+              <h4>{t.item!.name}</h4>
+              <p class="podium__price">{eur(t.item!.price)}</p>
+              <p class="podium__why">{t.why}</p>
+              <div class="podium__actions">
+                <button type="button" class="pick js-pick" data-grupo={grupo} data-id={t.item!.id} data-name={t.item!.name} data-price={t.item!.price}>
+                  Elegir {label}
+                </button>
+                <a class="podium__link" href={t.item!.url} target="_blank" rel="noopener noreferrer">
+                  Ver en {split(t.item!.store).short} ↗
+                </a>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <h3 class="choice__h">Las {items.length}, de la más cara a la más barata</h3>
+    <div class="opts">
+      {
+        items.map((o) => (
+          <article class="opt" id={`${grupo}-${o.id}`}>
+            <div class="opt__media">
+              {o.image ? <img src={o.image} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" /> : <span class="ph">{o.type}</span>}
+              {isTop.has(o.id) && <span class="opt__badge">Top {isTop.get(o.id)}</span>}
+            </div>
+            <div class="opt__body">
+              <p class="opt__type">{o.type}</p>
+              <h4 class="opt__name">{o.name}</h4>
+              <p class="opt__price">
+                {eur(o.price)}
+                {o.rating && <span class="opt__rating">★ {o.rating}</span>}
+              </p>
+              {o.specs && o.specs.length > 0 && (
+                <ul class="opt__specs">
+                  {o.specs.slice(0, 4).map((s) => <li>{s}</li>)}
+                </ul>
+              )}
+              <div class="opt__pc">
+                {o.pros && o.pros.length > 0 && (
+                  <ul class="opt__pros" aria-label="Pros">
+                    {o.pros.map((p) => <li>{p}</li>)}
+                  </ul>
+                )}
+                {o.cons && o.cons.length > 0 && (
+                  <ul class="opt__cons" aria-label="Contras">
+                    {o.cons.map((c) => <li>{c}</li>)}
+                  </ul>
+                )}
+              </div>
+              {o.eligela_si && <p class="opt__if">{o.eligela_si}</p>}
+              {o.try && o.try.length > 0 && (
+                <div class="opt__try">
+                  <span>Dónde probarla</span>
+                  <ul>
+                    {o.try.map((t) => (
+                      <li>
+                        <b>{t.store}</b>
+                        {t.address && <> · {t.address}</>}
+                        {t.stock && <em> · {t.stock}</em>}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <div class="opt__actions">
+                <button type="button" class="pick js-pick" data-grupo={grupo} data-id={o.id} data-name={o.name} data-price={o.price}>
+                  Elegir {label}
+                </button>
+                <a class="opt__link" href={o.url} target="_blank" rel="noopener noreferrer">
+                  {split(o.store).short} ↗
+                </a>
+                {o.alt?.slice(0, 2).map((a) => (
+                  <a class="opt__link opt__link--alt" href={a.url} target="_blank" rel="noopener noreferrer">
+                    {split(a.store).short}
+                    {a.price ? ` ${eur(a.price)}` : ''} ↗
+                  </a>
+                ))}
+              </div>
+              {split(o.store).detail && <p class="opt__seller">{split(o.store).detail}</p>}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <p class="choice__foot">Precios consultados el {data.checked}. Pueden cambiar: revísalos antes de pagar.</p>
+  </div>
+</section>
+
+<style>
+  .choice__tip {
+    max-width: 760px;
+    margin: -24px auto clamp(32px, 5vw, 48px);
+    padding: 14px 18px;
+    border-left: 2px solid var(--gold);
+    background: rgba(201, 166, 90, 0.08);
+    font-size: 15px;
+  }
+  .choice__h {
+    margin: clamp(36px, 6vw, 56px) 0 22px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.3em;
+    padding-left: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .band--light .choice__h {
+    color: var(--gold-deep);
+  }
+
+  /* Podio */
+  .podium {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(16px, 3vw, 28px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .podium__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--coal-2);
+    border: 1px solid var(--line-dark);
+  }
+  .podium__item--1 {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 1px var(--gold), 0 24px 60px -30px rgba(201, 166, 90, 0.55);
+  }
+  .podium__medal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    padding: 8px 16px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+  .podium__item--2 .podium__medal {
+    background: #cfd2d6;
+  }
+  .podium__item--3 .podium__medal {
+    background: #c48a5a;
+  }
+  .podium__media,
+  .opt__media {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    background: #fff;
+    padding: 18px;
+    overflow: hidden;
+  }
+  .podium__media img,
+  .opt__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .ph,
+  :global(.choice .ph) {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 12px;
+  }
+  .podium__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    padding: 22px clamp(18px, 3vw, 26px) 24px;
+    color: var(--cream);
+  }
+  .podium__type,
+  .opt__type {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .podium h4,
+  .opt__name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.03em;
+    line-height: 1.35;
+  }
+  .podium__price {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 30px;
+    color: var(--gold-light);
+    line-height: 1.1;
+  }
+  .podium__why {
+    margin: 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--gold);
+  }
+  .podium__actions,
+  .opt__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  .podium__link,
+  .opt__link {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .podium__link:hover,
+  .opt__link:hover {
+    color: var(--gold-light);
+  }
+
+  /* Botón elegir */
+  .pick {
+    min-height: 42px;
+    padding: 8px 20px;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--gold-light);
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .pick:hover {
+    background: rgba(201, 166, 90, 0.15);
+  }
+  .pick[aria-pressed='true'] {
+    background: var(--gold);
+    color: var(--black);
+  }
+  .pick[aria-pressed='true']::before {
+    content: '✓ ';
+  }
+
+  /* Las 15 */
+  .opts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
+    gap: clamp(16px, 2.6vw, 24px);
+  }
+  .opt {
+    display: flex;
+    flex-direction: column;
+    background: var(--coal-2);
+    border: 1px solid var(--line-dark);
+    color: var(--cream);
+  }
+  .opt.is-picked {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+  .opt__media {
+    aspect-ratio: 16 / 10;
+    padding: 14px;
+  }
+  .opt__badge {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 6px 12px;
+    background: var(--black);
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .opt__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    padding: 18px 20px 20px;
+  }
+  .opt__name {
+    font-size: 16px;
+  }
+  .opt__price {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 24px;
+    color: var(--gold-light);
+  }
+  .opt__rating {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .opt__specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .opt__specs li {
+    padding: 2px 9px;
+    border: 1px solid var(--line-dark);
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .opt__pc {
+    display: grid;
+    gap: 6px;
+  }
+  .opt__pros,
+  .opt__cons {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+  }
+  .opt__pros li,
+  .opt__cons li {
+    position: relative;
+    padding: 2px 0 2px 22px;
+  }
+  .opt__pros li::before {
+    content: '+';
+    position: absolute;
+    left: 4px;
+    color: #8fc07a;
+    font-weight: 700;
+  }
+  .opt__cons li {
+    color: var(--muted);
+  }
+  .opt__cons li::before {
+    content: '–';
+    position: absolute;
+    left: 4px;
+    color: #d98a6a;
+    font-weight: 700;
+  }
+  .opt__if {
+    margin: 0;
+    font-size: 14px;
+    color: var(--gold-light);
+  }
+  .opt__if::before {
+    content: 'Elígela si… ';
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .opt__try {
+    padding: 10px 12px;
+    background: var(--black);
+    border: 1px dashed var(--line-dark);
+    font-size: 13px;
+  }
+  .opt__try > span {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .opt__try ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 4px;
+    color: var(--cream-2);
+  }
+  .opt__try em {
+    font-style: normal;
+    color: var(--muted);
+  }
+  .opt__seller {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .opt__link--alt {
+    font-size: 13px;
+  }
+  .choice__foot {
+    margin: 26px 0 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .band--light .choice__foot,
+  .band--light .intro {
+    color: var(--ink-soft);
+  }
+</style>

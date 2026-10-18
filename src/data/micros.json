@@ -1,0 +1,588 @@
+{
+  "checked": "18 de octubre de 2026",
+  "intro": "En un cuarto pequeño y vacío lo que más importa es la distancia a la boca y el eco: un micro de solapa inalámbrico o un dinámico USB muy cerca de la boca suenan mejor que un condensador lejos. Como la IA limpiará la voz después, basta con gama media; si eliges un USB, cuenta unos 25-40 € más de brazo.",
+  "top3": [
+    {
+      "id": "dji-mic-mini-2s",
+      "why": "Va en el pecho, así que la voz suena cerca aunque mires a las pantallas, no ocupa mesa y sirve igual con el iPhone o una cámara. Suma copia interna a 32 bits y reducción de ruido con IA; si grabas solo tú, el kit de 1 TX + receptor móvil + estuche cuesta unos 99 €."
+    },
+    {
+      "id": "dji-mic-mini-2",
+      "why": "Mismo concepto por 99 € con estuche, para Mac, iPhone y cámara. Elígelo antes que el 2S si no necesitas la copia interna ni la IA del propio micro, porque tu editor ya limpia la voz."
+    },
+    {
+      "id": "maono-pd200xs",
+      "why": "Si no quieres llevar nada en la ropa, es el mejor sonido por menos de 90 €, con brazo incluido. Es dinámico (aguanta el eco de un cuarto vacío), pero te ata al escritorio, se ve en plano y para el móvil fuera de casa necesitas uno inalámbrico."
+    }
+  ],
+  "items": [
+    {
+      "id": "shure-mv7-plus",
+      "name": "Shure MV7+",
+      "brand": "Shure",
+      "type": "USB dinámico (USB-C + XLR)",
+      "price": 288,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0CTJ7PVN1",
+      "alt": [
+        {
+          "store": "Thomann (incluye soporte de sobremesa y cable de 3 m)",
+          "url": "https://www.thomann.es/shure_mv7_plus.htm",
+          "price": 298
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/81SkpwyPZnL._AC_SL1500_.jpg",
+      "specs": [
+        "Dinámico cardioide, salida USB-C y XLR",
+        "Reductor de ruido en tiempo real y nivel automático dentro del micro",
+        "Panel táctil con silencio, mando de auriculares, app MOTIV Mix",
+        "24 bits / 48 kHz, 573 g, rosca de 5/8\"",
+        "En Amazon a 288 € va sin soporte: necesitas brazo (25-70 €)"
+      ],
+      "rating": "4,7/5 (1.482 opiniones en Amazon.es); 5,0/5 (22) en Thomann",
+      "pros": [
+        "Muy buen sonido de voz y rechaza bien el eco de la sala",
+        "Denoiser y autonivel integrados, sin depender del software",
+        "USB ahora y XLR si algún día compras una interfaz",
+        "Construcción sólida y aspecto profesional en plano"
+      ],
+      "cons": [
+        "El más caro de los micros de mesa: mucho dinero para una mejora pequeña frente a uno de 70-100 €",
+        "Hay que hablarle a 10-15 cm, así que se ve delante de la cara",
+        "Sin soporte en la oferta de 288 €; con soporte cuesta 298 €"
+      ],
+      "eligela_si": "Quieres el mejor micro USB de mesa y no te importa pagar de más por tenerlo todo en el propio micro."
+    },
+    {
+      "id": "rode-wireless-pro",
+      "name": "RØDE Wireless PRO (2 TX + RX + 2 lavalier + estuche)",
+      "brand": "RØDE",
+      "type": "Inalámbrico de solapa",
+      "price": 233,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0CB2HGR9Q",
+      "alt": [
+        {
+          "store": "Thomann (llega en 1-2 semanas)",
+          "url": "https://www.thomann.es/rode_wireless_pro.htm",
+          "price": 233
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/51E+Vw1VFWL._AC_SL1000_.jpg",
+      "specs": [
+        "2 transmisores con micro integrado, 2 lavalier incluidos, receptor y estuche de carga",
+        "Grabación interna en cada TX: 32 bits flotante, 32 GB (más de 40 h)",
+        "Receptor USB-C (Mac, Windows, iPad, Android) y jack 3,5 mm para cámara",
+        "Alcance 260 m, batería de 7 h por módulo, módulos de 36 g",
+        "Timecode y entradas de micro con bloqueo"
+      ],
+      "rating": "4,6/5 (1.502 opiniones en Amazon.es); 4,9/5 (73) en Thomann",
+      "pros": [
+        "Calidad de audio de gama alta, con los lavalier ya en la caja",
+        "Copia interna a 32 bits flotante: nunca saturas y tienes backup",
+        "El receptor sirve de interfaz USB para Mac, móvil y cámara",
+        "Muy robusto"
+      ],
+      "cons": [
+        "233 €: sobra para hablar a cámara en un escritorio",
+        "Módulos más grandes y pesados que los DJI Mic Mini, y menos batería (7 h frente a 11 h)"
+      ],
+      "eligela_si": "Quieres un inalámbrico para muchos años, con copia interna y la mejor calidad, y el precio no es problema."
+    },
+    {
+      "id": "dji-mic-3",
+      "name": "DJI Mic 3 (2 TX + 1 RX + estuche de carga)",
+      "brand": "DJI",
+      "type": "Inalámbrico de solapa",
+      "price": 208,
+      "store": "Tienda DJI",
+      "url": "https://store.dji.com/es/product/dji-mic-3",
+      "alt": [
+        {
+          "store": "Amazon.es",
+          "url": "https://www.amazon.es/dp/B0F995J8FR",
+          "price": 259
+        },
+        {
+          "store": "MediaMarkt",
+          "url": "https://www.mediamarkt.es/es/product/_microfono-dji-mic-3-2-tx-1-rx-estuche-de-carga-inalambrico-cancelacion-de-ruido-avanzada-28h-autonomia-negro-1605278.html",
+          "price": 289
+        }
+      ],
+      "image": "https://se-cdn.djiits.com/tpc/uploads/spu/cover/473691cc5e140d0341a30b31b479c627@ultra.png?format=webp",
+      "specs": [
+        "2 transmisores de 16 g con micro omni integrado, receptor con pantalla táctil y estuche",
+        "Grabación interna 32 bits flotante en cada TX (32 GB, hasta 43 h)",
+        "Cancelación de ruido de 2 niveles y 3 preajustes de voz",
+        "TX 8 h, RX 10 h, 28 h con estuche; alcance 400 m",
+        "Receptor USB-C: Mac (entrada de sonido), iPhone USB-C (adaptador incluido) y cámara con cable jack"
+      ],
+      "rating": "4,6/5 (1.704 opiniones en Amazon.es); 4,9/5 (14) en MediaMarkt",
+      "pros": [
+        "Lo mejor de DJI: pantalla en el receptor y backup interno a 32 bits",
+        "Un solo kit para Mac, iPhone y cámara",
+        "Muy pequeño y fácil de esconder en la ropa",
+        "En la tienda de DJI sale a 208 €, 51 € menos que en Amazon"
+      ],
+      "cons": [
+        "Para un solo hablante apenas notas la mejora frente a los Mic Mini",
+        "Menos batería en el TX que la serie Mini (8 h frente a 11 h)",
+        "El precio varía mucho según tienda (208-289 €): compara antes de comprar"
+      ],
+      "eligela_si": "Quieres lo mejor de DJI, con copia interna y pantalla, y vas a grabar también fuera con el móvil o una cámara."
+    },
+    {
+      "id": "rode-podmic-usb",
+      "name": "RØDE PodMic USB",
+      "brand": "RØDE",
+      "type": "USB dinámico (USB-C + XLR)",
+      "price": 177,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0BQM4TKF7",
+      "alt": [
+        {
+          "store": "Thomann (llega en aprox. 1 semana)",
+          "url": "https://www.thomann.es/rode_podmic_usb.htm",
+          "price": 177
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/61ElAcEsHiL._AC_SL1080_.jpg",
+      "specs": [
+        "Dinámico cardioide, USB-C y XLR, 20 Hz-20 kHz",
+        "DSP Aphex integrado y salida de auriculares sin latencia",
+        "Carcasa metálica, 896 g, rosca de 5/8\"",
+        "Incluye cable USB-C de 3 m y antipop de espuma",
+        "Compatible con Mac, Windows, iPhone y Android (MFi)"
+      ],
+      "rating": "4,4/5 (1.458 opiniones en Amazon.es); 4,6/5 (40) en Thomann",
+      "pros": [
+        "Dinámico: casi no recoge eco ni ruido de la habitación",
+        "Sonido tipo radio por USB, con XLR para crecer",
+        "Salida de auriculares sin latencia",
+        "Filtro antipop interno en la cesta metálica"
+      ],
+      "cons": [
+        "Pesa casi 900 g: pide un brazo bueno (RØDE PSA1, unos 72 €) y no uno barato",
+        "Grande: se ve mucho delante de la cara",
+        "177 € y hay que hablarle muy cerca"
+      ],
+      "eligela_si": "Quieres sonido de estudio por USB, no te molesta verlo en plano y vas a comprar un brazo robusto."
+    },
+    {
+      "id": "dji-mic-mini-2s",
+      "name": "DJI Mic Mini 2S (2 TX + 1 RX + estuche de carga)",
+      "brand": "DJI",
+      "type": "Inalámbrico de solapa",
+      "price": 171,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0GKNGX68S",
+      "alt": [
+        {
+          "store": "Tienda DJI",
+          "url": "https://store.dji.com/es/product/dji-mic-mini-2s",
+          "price": 189
+        },
+        {
+          "store": "MediaMarkt",
+          "url": "https://www.mediamarkt.es/es/product/_microfono-dji-mic-mini-2s-2-tx-1-rx-estuche-de-carga-cancelacion-de-ruido-con-ia-28h-autonomia-16gb-almacenamiento-negro-1671184.html",
+          "price": 189
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/51wjJNhOXqL._AC_SL1500_.jpg",
+      "specs": [
+        "2 transmisores de 12 g con micro omni, receptor y estuche (40 h en total)",
+        "Grabación interna 32 bits flotante en el TX (unos 14,5 GB, hasta 28 h): copia de seguridad",
+        "Cancelación de ruido con IA de 2 niveles y 3 preajustes de voz",
+        "TX 11 h de batería, alcance 400 m",
+        "Receptor con jack 3,5 mm (cámara) y USB-C (Mac, iPhone USB-C; con Lightning hace falta adaptador)",
+        "Para una sola persona: kit 1 TX + 1 RX móvil + estuche por 99 € (Amazon y DJI)"
+      ],
+      "rating": "4,6/5 (131 opiniones en Amazon.es); 5,0/5 (3) en MediaMarkt",
+      "pros": [
+        "Copia interna a 32 bits y reducción de ruido con IA por menos de 175 €",
+        "Ligerísimo y casi invisible en la ropa",
+        "Sirve para Mac, móvil y cámara con el mismo receptor",
+        "11 h por transmisor y estuche de 40 h"
+      ],
+      "cons": [
+        "Es nuevo: pocas opiniones todavía",
+        "Si no necesitas copia interna ni IA, el Mic Mini 2 cuesta 99 €",
+        "Con iPhone Lightning necesitas adaptador aparte"
+      ],
+      "eligela_si": "Quieres un lavalier para todo (Mac, móvil, cámara) con copia interna y sin gastar más de 175 €."
+    },
+    {
+      "id": "rode-wireless-go-gen-3",
+      "name": "RØDE Wireless GO (Gen 3) (2 TX + RX)",
+      "brand": "RØDE",
+      "type": "Inalámbrico de solapa (micro integrado)",
+      "price": 155,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0DN1PGH94",
+      "alt": [
+        {
+          "store": "Thomann",
+          "url": "https://www.thomann.es/rode_wireless_go_gen_3.htm",
+          "price": 155
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/61feWshwtsL._AC_SL1500_.jpg",
+      "specs": [
+        "2 transmisores con micro omni integrado y receptor (el lavalier es opcional: Lavalier GO, unos 55 €)",
+        "Grabación interna 32 bits flotante, más de 40 h",
+        "Receptor USB-C (Mac, iPhone, Android) y jack 3,5 mm",
+        "Alcance 260 m, batería de hasta 7 h",
+        "Incluye hub de carga USB triple, cables, 3 antivientos y funda"
+      ],
+      "rating": "4,5/5 (574 opiniones en Amazon.es); 4,6/5 (12) en Thomann",
+      "pros": [
+        "Copia interna a 32 bits: no saturas nunca",
+        "Receptor USB-C que funciona como tarjeta de sonido en Mac y móvil",
+        "Muy fácil de usar y marca fiable",
+        "A 155 € queda por debajo del PVP de RØDE (199,99 €)"
+      ],
+      "cons": [
+        "El micro va en el propio módulo: más grande y visible que un DJI Mini",
+        "Solo 7 h de batería y sin estuche de carga",
+        "Sin lavalier en la caja; para esconderlo hay que sumar unos 55 €"
+      ],
+      "eligela_si": "Prefieres RØDE por fiabilidad y quieres grabación interna a 32 bits sin pagar el Wireless PRO."
+    },
+    {
+      "id": "elgato-wave3-mk2",
+      "name": "Elgato Wave:3 MK.2",
+      "brand": "Elgato",
+      "type": "USB condensador",
+      "price": 139.99,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0GGYLFHPS",
+      "alt": [
+        {
+          "store": "MediaMarkt",
+          "url": "https://www.mediamarkt.es/es/product/_microfono-elgato-wave3-mk2-usb-conector-35-mm-mac-pc-negro-1622701.html",
+          "price": 139.99
+        },
+        {
+          "store": "Elgato.com",
+          "url": "https://www.elgato.com/es/es/p/wave-3",
+          "price": 169.99
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/61ngUaydY-L._AC_SL1500_.jpg",
+      "specs": [
+        "Condensador cardioide, USB-C, 24 bits / 48 kHz, 70 Hz-20 kHz",
+        "Clipguard 2.0 (anti-saturación), Auto Gain y DSP integrado",
+        "Dial multifunción, silencio táctil, salida de auriculares, anillo LED",
+        "Software Wave Link con efectos VST",
+        "Soporte de mesa incluido"
+      ],
+      "rating": "4,8/5 (188 opiniones en elgato.com); 4,1/5 (45) en Amazon.es; 5,0/5 (25) en MediaMarkt",
+      "pros": [
+        "Fácil de usar y muy difícil de saturar",
+        "Funciona con Mac sin drivers y con buen software",
+        "Tamaño compacto y buen acabado",
+        "Se puede poner en brazo con su rosca"
+      ],
+      "cons": [
+        "Condensador: en un cuarto pequeño y vacío recoge más eco que un dinámico",
+        "Hay que hablarle a 10-15 cm; mejor con brazo (25-70 €)",
+        "139,99 € es caro frente a dinámicos de 60-90 € que rechazan mejor la sala"
+      ],
+      "eligela_si": "Quieres un USB de mesa fácil, con buena app y buen aspecto, y tu despacho tiene alfombra y cortinas que amortigüen el eco."
+    },
+    {
+      "id": "hollyland-lark-m2-combo",
+      "name": "Hollyland Lark M2 Combo (2 TX + 3 RX)",
+      "brand": "Hollyland",
+      "type": "Inalámbrico de solapa",
+      "price": 111,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0CP7QXWPN",
+      "alt": [
+        {
+          "store": "PcComponentes",
+          "url": "https://www.pccomponentes.com/hollyland-lark-m2-combo-microfono-inalambrico-negro",
+          "price": 111.32
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/61vXwLemjJL._AC_SL1500_.jpg",
+      "specs": [
+        "2 transmisores de 9 g y 3 receptores: USB-C, Lightning (MFi) y cámara (jack)",
+        "48 kHz / 24 bits, relación señal/ruido 70 dB",
+        "Cancelación de ruido ENC con un botón",
+        "TX hasta 10 h, 40 h con estuche, alcance 300 m",
+        "El receptor USB-C funciona como tarjeta de sonido USB (Mac sin drivers)"
+      ],
+      "rating": "4,7/5 (8.257 opiniones en Amazon.es); 4,8/5 (51) en PcComponentes",
+      "pros": [
+        "Un receptor para cada uso: Mac/Android, iPhone con Lightning y cámara",
+        "Muchísimas opiniones y buena nota",
+        "Muy ligero (9 g)",
+        "Estuche con 40 h de autonomía"
+      ],
+      "cons": [
+        "Sin grabación interna ni pantalla: si se corta la señal pierdes la toma",
+        "Modelo de 2024: los DJI Mic Mini 2 y 2S son más nuevos"
+      ],
+      "eligela_si": "Quieres un kit completo para Mac, iPhone y cámara por poco más de 100 € y no necesitas copia interna."
+    },
+    {
+      "id": "hyperx-quadcast-2",
+      "name": "HyperX QuadCast 2",
+      "brand": "HyperX",
+      "type": "USB condensador",
+      "price": 99.9,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0D9MCK4R8",
+      "alt": [
+        {
+          "store": "MediaMarkt",
+          "url": "https://www.mediamarkt.es/es/product/_microfono-hyperx-quadcast-2-usb-sensor-para-silenciar-indicadores-led-negro-1582803.html",
+          "price": 99.9
+        },
+        {
+          "store": "PcComponentes",
+          "url": "https://www.pccomponentes.com/hyperx-quadcast-2-microfono-para-streaming-de-condensador-usb-negro",
+          "price": 99.9
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/71qTtU45xSL._AC_SL1500_.jpg",
+      "specs": [
+        "Condensador USB con 4 patrones: cardioide, omni, bidireccional y estéreo",
+        "Soporte antivibración extraíble, rosca de 3/8\" y 5/8\" (sirve en brazo)",
+        "Mando de ganancia y volumen de auriculares, silencio táctil, LED rojo",
+        "Compatible con Mac, PC y PlayStation"
+      ],
+      "rating": "4,7/5 (1.351 opiniones en Amazon.es); 4,6/5 (167) en MediaMarkt",
+      "pros": [
+        "Enchufar y listo, con soporte antivibración incluido",
+        "Mando físico para ganancia y silencio con un toque",
+        "Cuatro patrones, el cardioide vale para hablar",
+        "Buen precio para un condensador"
+      ],
+      "cons": [
+        "Estética gaming con luz roja, muy visible en cámara",
+        "Recoge más eco de la sala que un dinámico",
+        "Grande: tapa la cara si no lo subes con un brazo"
+      ],
+      "eligela_si": "Quieres un USB todo en uno, barato y con mando físico, y el estilo gaming no te importa."
+    },
+    {
+      "id": "dji-mic-mini-2",
+      "name": "DJI Mic Mini 2 (2 TX + 1 RX + estuche de carga)",
+      "brand": "DJI",
+      "type": "Inalámbrico de solapa",
+      "price": 99,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0G39C97WQ",
+      "alt": [
+        {
+          "store": "Tienda DJI",
+          "url": "https://store.dji.com/es/product/dji-mic-mini-2",
+          "price": 99
+        },
+        {
+          "store": "MediaMarkt",
+          "url": "https://www.mediamarkt.es/es/product/_microfono-dji-mic-mini-2-2tx-1rx-estuche-de-carga-inalambrico-48h-autonomia-3-preajustes-tono-de-voz-cancelacion-ruido-2-niveles-negro-1628048.html",
+          "price": 99.99
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/61xDA0eTDQL._AC_SL1500_.jpg",
+      "specs": [
+        "2 transmisores de 11 g con micro omni, receptor estándar y estuche (48 h en total)",
+        "Cancelación de ruido de 2 niveles y 3 preajustes de voz",
+        "TX 11,5 h, alcance 400 m, 48 kHz / 24 bits",
+        "Receptor con jack 3,5 mm y USB-C: móvil, cámara y ordenador",
+        "Con receptor móvil USB-C directo: 79 €; 1 TX + RX móvil: 59 €"
+      ],
+      "rating": "4,6/5 (811 opiniones en Amazon.es); 4,9/5 (12) en MediaMarkt",
+      "pros": [
+        "Kit completo con estuche por 99 €",
+        "Muy ligero y discreto, con 48 h de autonomía total",
+        "Mac, iPhone y cámara con el mismo receptor",
+        "Reducción de ruido y presets de voz"
+      ],
+      "cons": [
+        "No graba en los transmisores (solo pista de seguridad en el receptor)",
+        "Con iPhone Lightning hace falta adaptador",
+        "Sin pantalla en el receptor: se maneja con rueda y botones"
+      ],
+      "eligela_si": "Quieres el lavalier inalámbrico más barato que de verdad sirva para Mac, iPhone y cámara."
+    },
+    {
+      "id": "rode-videomic-go-ii",
+      "name": "RØDE VideoMic GO II",
+      "brand": "RØDE",
+      "type": "Micro de cañón para cámara (USB-C y jack)",
+      "price": 88,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0D6X93C58",
+      "alt": [
+        {
+          "store": "Thomann (versión Helix)",
+          "url": "https://www.thomann.es/rode_videomic_go_ii_helix.htm",
+          "price": 89
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/71k0CKbGqJL._AC_SL1500_.jpg",
+      "specs": [
+        "Condensador supercardioide de cañón, ultracompacto",
+        "Interfaz USB-C 2x2 (Mac, PC, móvil) y salida jack 3,5 mm (cámara)",
+        "Montura aislante Helix y antiviento incluidos",
+        "Sin pilas: se alimenta por USB o por la cámara",
+        "El cable USB-C no viene incluido"
+      ],
+      "rating": "4,5/5 (610 opiniones en Amazon.es); 5,0/5 (2) en Thomann",
+      "pros": [
+        "Un solo micro para la cámara y para el Mac en el escritorio",
+        "Nada en la ropa ni cables de solapa",
+        "Pequeño y ligero; rechaza ruido de los lados",
+        "Compatible con RØDE Connect y RØDE Central"
+      ],
+      "cons": [
+        "Hay que ponerlo a 30-60 cm apuntando a la boca, y puede verse en plano",
+        "Capta más eco del cuarto que un lavalier",
+        "No sirve para moverte: va fijo en la cámara o en un trípode"
+      ],
+      "eligela_si": "Quieres un micro pequeño para la cámara que también valga como USB en el escritorio."
+    },
+    {
+      "id": "rode-wireless-micro",
+      "name": "RØDE Wireless Micro (2 TX + RX USB-C + estuche)",
+      "brand": "RØDE",
+      "type": "Inalámbrico de solapa",
+      "price": 85,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0DFXQDTDT",
+      "alt": [
+        {
+          "store": "PcComponentes",
+          "url": "https://www.pccomponentes.com/rode-wireless-micro-microfono-inalambrico-ultracompacto-usb-c-negro",
+          "price": 85
+        },
+        {
+          "store": "Thomann",
+          "url": "https://www.thomann.es/rode_wireless_micro.htm",
+          "price": 88
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/4180DwJIQIL._AC_SL1000_.jpg",
+      "specs": [
+        "2 transmisores de 12 g con cápsula omni integrada, receptor USB-C que se enchufa directo y estuche",
+        "24 bits / 48 kHz, nivel automático GainAssist",
+        "Batería 7 h por TX, 21 h con estuche, alcance 100 m",
+        "Pensado para móvil (USB-C o Lightning); RØDE no lo anuncia para Mac",
+        "Versión con receptor de cámara (jack): 118 € en Thomann"
+      ],
+      "rating": "4,6/5 (1.346 opiniones en Amazon.es); 4,9/5 (17) en Thomann",
+      "pros": [
+        "Muy barato para ser RØDE",
+        "Pequeñísimo y con 21 h con el estuche",
+        "Enchufar y grabar en el móvil sin cables",
+        "Con la app RØDE Capture el TX conecta al iPhone sin receptor"
+      ],
+      "cons": [
+        "Hecho para smartphone: en Mac no es un uso oficial, pruébalo dentro del plazo de devolución",
+        "Sin grabación interna ni 32 bits flotante"
+      ],
+      "eligela_si": "Vas a grabar sobre todo con el móvil fuera de casa y quieres RØDE a precio de gama baja."
+    },
+    {
+      "id": "maono-pd200xs",
+      "name": "MAONO PD200XS (con brazo)",
+      "brand": "MAONO",
+      "type": "USB dinámico (USB-C + XLR)",
+      "price": 83.99,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0CN493YHF",
+      "alt": [
+        {
+          "store": "Amazon.es (PD200X sin brazo)",
+          "url": "https://www.amazon.es/dp/B0BSFG4SCW",
+          "price": 68
+        }
+      ],
+      "image": "https://m.media-amazon.com/images/I/71Q-kEIZsrL._AC_SL1500_.jpg",
+      "specs": [
+        "Dinámico cardioide, USB-C y XLR, 40 Hz-16 kHz",
+        "Brazo de sobremesa incluido (no hay que comprarlo aparte)",
+        "Mando de ganancia y volumen, silencio táctil, salida de auriculares",
+        "Software MAONO Link (ecualizador, compresor, limitador) y luz RGB",
+        "Cable USB de 2,5 m"
+      ],
+      "rating": "4,5/5 (1.651 opiniones en Amazon.es)",
+      "pros": [
+        "Dinámico: rechaza bien el eco de un cuarto vacío",
+        "Micro y brazo por 84 € (el PD200X suelto cuesta 68 €)",
+        "USB hoy y XLR si luego creces",
+        "Software con ecualizador, compresor y limitador"
+      ],
+      "cons": [
+        "Gama de entrada: construcción y sonido por debajo de Shure o RØDE",
+        "Luz RGB y estética gaming, visible en cámara"
+      ],
+      "eligela_si": "Quieres un buen sonido de voz por menos de 90 € con brazo incluido y sin complicarte."
+    },
+    {
+      "id": "fifine-am8",
+      "name": "FIFINE AM8",
+      "brand": "FIFINE",
+      "type": "USB dinámico (USB-C + XLR)",
+      "price": 58.99,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0C4KVBBZM",
+      "alt": [],
+      "image": "https://m.media-amazon.com/images/I/61b8-3KARZL._AC_SL1500_.jpg",
+      "specs": [
+        "Dinámico cardioide, USB (cable USB-A a USB-C incluido) y XLR, 50 Hz-16 kHz",
+        "Mando de ganancia, silencio con LED y salida de auriculares (solo en USB)",
+        "Luz RGB y soporte de sobremesa incluido",
+        "Mac y Windows; no vale para iPad ni móvil"
+      ],
+      "rating": "4,6/5 (3.530 opiniones en Amazon.es)",
+      "pros": [
+        "El micro dinámico con auriculares más barato de la lista",
+        "Muy bien valorado (3.530 opiniones)",
+        "Rechaza bien el ruido de la sala",
+        "XLR para crecer más adelante"
+      ],
+      "cons": [
+        "Gama de entrada: construcción y sonido algo por debajo de Maono o RØDE",
+        "Para tenerlo cerca de la boca hay que añadir un brazo (unos 25 €)",
+        "No funciona con iPad ni móvil, y lo vende un tercero (Salcar GmbH)"
+      ],
+      "eligela_si": "Solo quieres un micro de mesa muy barato que suene mucho mejor que el del portátil o unos auriculares."
+    },
+    {
+      "id": "hollyland-lark-a2-duo",
+      "name": "Hollyland Lark A2 Duo (2 TX + RX USB-C + estuche)",
+      "brand": "Hollyland",
+      "type": "Inalámbrico de solapa",
+      "price": 47,
+      "store": "Amazon.es",
+      "url": "https://www.amazon.es/dp/B0F3D55D5R",
+      "alt": [],
+      "image": "https://m.media-amazon.com/images/I/71fseEzo9kL._AC_SL1500_.jpg",
+      "specs": [
+        "2 transmisores de 8,5 g, receptor USB-C plug and play y estuche de carga",
+        "48 kHz / 24 bits, cancelación de ruido con IA (3 niveles) y AI Auto-Limit",
+        "TX hasta 7 h (9 h con ahorro), 42 h con estuche, alcance 200 m",
+        "Funciona con Mac, móviles, tablets y algunas cámaras de acción",
+        "Pista de seguridad a -6 dB en el receptor (sin grabación interna)"
+      ],
+      "rating": "4,7/5 (2.045 opiniones en Amazon.es)",
+      "pros": [
+        "El kit inalámbrico más barato de la lista",
+        "Muy ligero y con cancelación de ruido por IA",
+        "42 h de batería con el estuche",
+        "Enchufar y usar en Mac y móvil USB-C"
+      ],
+      "cons": [
+        "Sin grabación interna y sin salida jack para cámara",
+        "Gama de entrada: más básico que DJI Mini o RØDE",
+        "El receptor es USB-C; para iPhone con Lightning existe otra versión"
+      ],
+      "eligela_si": "Quieres probar un micro de solapa inalámbrico gastando lo mínimo."
+    }
+  ]
+}
