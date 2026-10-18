@@ -84,8 +84,15 @@ const macLogica = [
   { t: 'Por qué así', d: 'La memoria del Mac no se puede ampliar: comprar de más hoy es pagar por adelantado algo que no uso. Mejor cambiar de Mac cuando el salto merezca la pena.' },
 ];
 
+const tocadorPiezas = [
+  { n: '2 × cajonera ALEX 36 × 70 cm', p: '65 € cada una', url: 'https://www.ikea.com/es/es/p/alex-cajonera-blanco-00473546/' },
+  { n: 'Bandeja extraíble KOMPLEMENT 75 × 58 cm', p: '25 €', url: 'https://www.ikea.com/es/es/p/komplement-bandeja-extraible-blanco-30246374/' },
+  { n: 'Balda de vidrio KOMPLEMENT 75 × 58 cm (la tapa de cristal)', p: 'precio sin comprobar', url: 'https://www.ikea.com/es/es/search/?q=komplement%20balda%20vidrio' },
+  { n: '2 × accesorio con compartimentos KOMPLEMENT', p: '16,99 € cada uno', url: 'https://www.ikea.com/es/es/p/komplement-accesorio-con-compartimentos-gris-claro-50404027/' },
+];
+
 const razones = [
-  { t: 'Es solo mío', d: 'Un cuarto entero para trabajar y grabar, sin compartirlo con nada. El mediano, más grande y con más luz, queda para la cama de las visitas y el tocador.' },
+  { t: 'Es solo mío', d: 'Un cuarto entero para trabajar y grabar, sin compartirlo con nada. El mediano, más grande y con más luz, queda para la cama de las visitas y el tocador de mi novia (cabe, ver abajo).' },
   { t: 'El aire no me da en la cabeza', d: 'En el cuarto mediano el aire acondicionado está encima de la puerta y su chorro va justo donde me sentaría. Aquí no.' },
   { t: 'En cámara no sale nada raro', d: 'Me siento mirando a la pared de la tele. Detrás, en el vídeo, sale la pared de la puerta: limpia y fácil de decorar. Ni tocador ni cama.' },
   { t: 'Los enchufes ya están', d: 'La pared de la mesa tiene dos enchufes. Solo falta internet, y lo resuelve el PLC sin obras ni cables por el suelo.' },
@@ -135,7 +142,7 @@ const pendientes = [
   { id: 'silla', t: 'Probar en tienda las sillas del top 3 y elegir una (sección Silla)' },
   { id: 'camara', t: 'Elegir la cámara y el micro (secciones Cámara y Micro)' },
   { id: 'wifi', t: 'Probar el Wi-Fi en el cuarto; si va flojo, comprar el PLC' },
-  { id: 'novia', t: 'Que mi novia me pase las medidas del tocador y de la cama (135 o 150)' },
+  { id: 'novia', t: 'Tocador de mi novia: cabe en el mediano con cama de 135 (o 150 sin mesitas). Medirlo al montarlo' },
   { id: 'montar', t: 'Montar la mesa a 5-8 cm de la pared y los brazos' },
   { id: 'mac', t: 'Dejar el Mac mini listo como servidor de Hermes' },
   { id: 'luego', t: 'Más adelante: la cinta de andar y el SSD externo' },
@@ -459,6 +466,52 @@ const pendientes = [
                 ))
               }
             </ol>
+          </div>
+          <div class="other">
+            <div class="other__text">
+              <h3>Y el cuarto mediano: cama y tocador</h3>
+              <p>
+                El tocador que quiere mi novia (el del TikTok) son 2 cajoneras ALEX con una bandeja KOMPLEMENT con tapa de cristal en
+                medio: unos <b>145 × 58 cm</b> y 70 de alto. No cabe junto a mi mesa ni con una cama en el cuarto pequeño, pero en el
+                mediano entra bien en la pared de la tele, en la esquina del balcón (luz natural para maquillarse), con la cama de
+                135 al lado. Quedan 68 cm para abrir el armario y 70 de paso a los pies. Con una cama de 150 también entra, pero
+                sin mesitas.
+              </p>
+              <ul class="other__parts">
+                {
+                  tocadorPiezas.map((t) => (
+                    <li>
+                      <a href={t.url} target="_blank" rel="noopener noreferrer">{t.n} ↗</a>
+                      <span>{t.p}</span>
+                    </li>
+                  ))
+                }
+              </ul>
+              <p class="other__note">En total, unos 220-250 € en IKEA. El ancho es una estimación: mídelo cuando esté montado.</p>
+            </div>
+            <figure class="room__plan other__plan">
+              <svg viewBox="-50 -40 510 360" role="img" aria-labelledby="plan2-t">
+                <title id="plan2-t">Plano del cuarto mediano con el tocador y una cama de 135</title>
+                <rect x="0" y="0" width="420" height="270" class="pl-floor" />
+                <path d="M0 0 H420 V193 M420 268 V270 H0 V250 M0 130 V0" class="pl-wall" />
+                <rect x="-3" y="130" width="6" height="120" class="pl-glass" />
+                <path d="M0 190 A60 60 0 0 0 60 130 M0 130 H60 M0 190 A60 60 0 0 1 60 250 M0 250 H60" class="pl-swing" />
+                <text class="pl-t" x="-8" y="194" text-anchor="end">Balcón</text>
+                <rect x="0" y="0" width="145" height="58" rx="2" class="pl-vanity" />
+                <text class="pl-desk-t" x="72" y="33" text-anchor="middle">Tocador 145 × 58</text>
+                <circle cx="72" cy="86" r="16" class="pl-chair" />
+                <rect x="155" y="0" width="135" height="200" rx="3" class="pl-bed" />
+                <text class="pl-bed-t" x="222" y="104" text-anchor="middle">Cama 135 × 200</text>
+                <rect x="358" y="10" width="62" height="160" class="pl-box" />
+                <text class="pl-t" x="389" y="94" text-anchor="middle">Armario</text>
+                <path d="M420 193 H345 M345 193 A75 75 0 0 0 420 268" class="pl-swing" />
+                <text class="pl-t" x="388" y="250" text-anchor="middle">Puerta</text>
+                <rect x="70" y="262" width="80" height="8" class="pl-rad" />
+                <text class="pl-t" x="110" y="252" text-anchor="middle">Radiador</text>
+                <text class="pl-cap" x="210" y="-18" text-anchor="middle">Pared de la tele</text>
+              </svg>
+              <figcaption>Cuarto mediano, 420 × 270 cm. Plano aproximado.</figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -1460,6 +1513,76 @@ const pendientes = [
       .reasons p {
         margin: 0;
         color: var(--muted);
+      }
+
+      .other {
+        display: grid;
+        gap: clamp(24px, 4vw, 48px);
+        align-items: center;
+        margin-top: clamp(48px, 7vw, 80px);
+        padding-top: clamp(36px, 5vw, 56px);
+        border-top: 1px solid var(--line-dark);
+      }
+      @media (min-width: 900px) {
+        .other {
+          grid-template-columns: 1fr 1.1fr;
+        }
+      }
+      .other h3 {
+        margin: 0 0 12px;
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: 15px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .other p {
+        margin: 0 0 14px;
+        color: var(--cream-2);
+      }
+      .other p b {
+        color: var(--gold-light);
+      }
+      .other__parts {
+        display: grid;
+        gap: 8px;
+        margin: 0 0 12px;
+        padding: 0;
+        list-style: none;
+      }
+      .other__parts li {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 4px 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line-dark);
+        font-size: 15px;
+      }
+      .other__parts a {
+        color: var(--cream);
+        text-decoration: underline;
+        text-decoration-color: var(--line-dark);
+        text-underline-offset: 4px;
+      }
+      .other__parts span {
+        color: var(--gold-light);
+      }
+      .other__note {
+        font-size: 13px;
+        color: var(--muted) !important;
+      }
+      .pl-vanity {
+        fill: #d6a3b5;
+      }
+      .pl-bed {
+        fill: #5d5579;
+      }
+      .pl-bed-t {
+        font-size: 12px;
+        font-weight: 700;
+        fill: var(--cream);
       }
 
       /* Conexiones */
